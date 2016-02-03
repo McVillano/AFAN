@@ -29,6 +29,7 @@ namespace WindowsFormsApplication1
             textOCodenfermo.Visible = false;
             textOSerial.Visible = false;
             //Test GitHub
+            //Test2 Github
         }
 
         public void updateForm1(string id, string nombre, string nif, OdbcConnection conn)
