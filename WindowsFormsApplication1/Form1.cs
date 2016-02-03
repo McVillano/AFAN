@@ -28,6 +28,7 @@ namespace WindowsFormsApplication1
             labelOSerial.Visible = false;
             textOCodenfermo.Visible = false;
             textOSerial.Visible = false;
+            textCodigo.visible = false;
         }
 
         public void updateForm1(string id, string nombre, string nif, OdbcConnection conn)
