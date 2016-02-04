@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.Odbc;
 
-namespace WindowsFormsApplication1
+namespace Afan
 {
     public partial class Form2 : Form
     {
