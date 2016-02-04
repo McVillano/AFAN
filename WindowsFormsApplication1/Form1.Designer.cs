@@ -151,6 +151,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.gestionDataSet = new Afan.gestionDataSet();
             this.clientesTableAdapter = new Afan.gestionDataSetTableAdapters.clientesTableAdapter();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.menuStrip1.SuspendLayout();
             this.tabControlMain.SuspendLayout();
             this.tabPageSocial.SuspendLayout();
@@ -205,6 +206,7 @@
             // 
             this.tabControlMain.Controls.Add(this.tabPageSocial);
             this.tabControlMain.Controls.Add(this.tabPageEvolu);
+            this.tabControlMain.Controls.Add(this.tabPage1);
             this.tabControlMain.Location = new System.Drawing.Point(183, 71);
             this.tabControlMain.Name = "tabControlMain";
             this.tabControlMain.SelectedIndex = 0;
@@ -1970,6 +1972,16 @@
             // 
             this.clientesTableAdapter.ClearBeforeFill = true;
             // 
+            // tabPage1
+            // 
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(1155, 653);
+            this.tabPage1.TabIndex = 2;
+            this.tabPage1.Text = "Documentación";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2132,6 +2144,7 @@
         private System.Windows.Forms.Button buttonAddEvol;
         private Afan.gestionDataSet gestionDataSet;
         private Afan.gestionDataSetTableAdapters.clientesTableAdapter clientesTableAdapter;
+        private System.Windows.Forms.TabPage tabPage1;
     }
 }
 
