@@ -131,22 +131,10 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.tabPageEvolu = new System.Windows.Forms.TabPage();
-            this.clientesBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
-            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
-            this.clientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.gestionDataSet = new WindowsFormsApplication1.gestionDataSet();
-            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
-            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
-            this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.clientesBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
+            this.buttonSaveEvol = new System.Windows.Forms.Button();
+            this.buttonAddEvol = new System.Windows.Forms.Button();
             this.dataRepeater1 = new Microsoft.VisualBasic.PowerPacks.DataRepeater();
+            this.textOCodenfermo = new System.Windows.Forms.TextBox();
             this.labelOCodenfermo = new System.Windows.Forms.Label();
             this.textOSerial = new System.Windows.Forms.TextBox();
             this.labelOSerial = new System.Windows.Forms.Label();
@@ -154,29 +142,28 @@
             this.comboPerfil = new System.Windows.Forms.ComboBox();
             this.richEvo = new System.Windows.Forms.RichTextBox();
             this.datePickEvo = new System.Windows.Forms.DateTimePicker();
+            this.clientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.gestionDataSet = new WindowsFormsApplication1.gestionDataSet();
             this.treeSlider = new System.Windows.Forms.TreeView();
             this.textSocio = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.comboEnfermo = new System.Windows.Forms.ComboBox();
-            this.buttonAddEnfermo = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.clientesTableAdapter = new WindowsFormsApplication1.gestionDataSetTableAdapters.clientesTableAdapter();
             this.tableAdapterManager = new WindowsFormsApplication1.gestionDataSetTableAdapters.TableAdapterManager();
             this.textDebug = new System.Windows.Forms.TextBox();
-            this.textOCodenfermo = new System.Windows.Forms.TextBox();
+            this.buttonAddEnfermo = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tabControlMain.SuspendLayout();
             this.tabPageSocial.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridTratamientos)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.tabPageEvolu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.clientesBindingNavigator)).BeginInit();
-            this.clientesBindingNavigator.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gestionDataSet)).BeginInit();
             this.dataRepeater1.ItemTemplate.SuspendLayout();
             this.dataRepeater1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gestionDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -1785,7 +1772,8 @@
             // 
             // tabPageEvolu
             // 
-            this.tabPageEvolu.Controls.Add(this.clientesBindingNavigator);
+            this.tabPageEvolu.Controls.Add(this.buttonSaveEvol);
+            this.tabPageEvolu.Controls.Add(this.buttonAddEvol);
             this.tabPageEvolu.Controls.Add(this.dataRepeater1);
             this.tabPageEvolu.Location = new System.Drawing.Point(4, 22);
             this.tabPageEvolu.Name = "tabPageEvolu";
@@ -1795,139 +1783,25 @@
             this.tabPageEvolu.Text = "Evolutivos";
             this.tabPageEvolu.UseVisualStyleBackColor = true;
             // 
-            // clientesBindingNavigator
+            // buttonSaveEvol
             // 
-            this.clientesBindingNavigator.AddNewItem = this.bindingNavigatorAddNewItem;
-            this.clientesBindingNavigator.BindingSource = this.clientesBindingSource;
-            this.clientesBindingNavigator.CountItem = this.bindingNavigatorCountItem;
-            this.clientesBindingNavigator.DeleteItem = this.bindingNavigatorDeleteItem;
-            this.clientesBindingNavigator.Dock = System.Windows.Forms.DockStyle.None;
-            this.clientesBindingNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.bindingNavigatorMoveFirstItem,
-            this.bindingNavigatorMovePreviousItem,
-            this.bindingNavigatorSeparator,
-            this.bindingNavigatorPositionItem,
-            this.bindingNavigatorCountItem,
-            this.bindingNavigatorSeparator1,
-            this.bindingNavigatorMoveNextItem,
-            this.bindingNavigatorMoveLastItem,
-            this.bindingNavigatorSeparator2,
-            this.bindingNavigatorAddNewItem,
-            this.bindingNavigatorDeleteItem,
-            this.clientesBindingNavigatorSaveItem});
-            this.clientesBindingNavigator.Location = new System.Drawing.Point(4, 3);
-            this.clientesBindingNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
-            this.clientesBindingNavigator.MoveLastItem = this.bindingNavigatorMoveLastItem;
-            this.clientesBindingNavigator.MoveNextItem = this.bindingNavigatorMoveNextItem;
-            this.clientesBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
-            this.clientesBindingNavigator.Name = "clientesBindingNavigator";
-            this.clientesBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.clientesBindingNavigator.Size = new System.Drawing.Size(277, 25);
-            this.clientesBindingNavigator.TabIndex = 10;
-            this.clientesBindingNavigator.Text = "bindingNavigator1";
+            this.buttonSaveEvol.Image = global::WindowsFormsApplication1.Properties.Resources.save_mini;
+            this.buttonSaveEvol.Location = new System.Drawing.Point(539, 3);
+            this.buttonSaveEvol.Name = "buttonSaveEvol";
+            this.buttonSaveEvol.Size = new System.Drawing.Size(642, 23);
+            this.buttonSaveEvol.TabIndex = 17;
+            this.buttonSaveEvol.UseVisualStyleBackColor = true;
+            this.buttonSaveEvol.Click += new System.EventHandler(this.buttonSaveEvol_Click);
             // 
-            // bindingNavigatorAddNewItem
+            // buttonAddEvol
             // 
-            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
-            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
-            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorAddNewItem.Text = "Add new";
-            // 
-            // clientesBindingSource
-            // 
-            this.clientesBindingSource.DataMember = "clientes";
-            this.clientesBindingSource.DataSource = this.gestionDataSet;
-            // 
-            // gestionDataSet
-            // 
-            this.gestionDataSet.DataSetName = "gestionDataSet";
-            this.gestionDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // bindingNavigatorCountItem
-            // 
-            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(36, 22);
-            this.bindingNavigatorCountItem.Text = "of {0}";
-            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
-            // 
-            // bindingNavigatorDeleteItem
-            // 
-            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
-            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
-            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorDeleteItem.Text = "Delete";
-            // 
-            // bindingNavigatorMoveFirstItem
-            // 
-            this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
-            this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
-            this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveFirstItem.Text = "Move first";
-            // 
-            // bindingNavigatorMovePreviousItem
-            // 
-            this.bindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
-            this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
-            this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMovePreviousItem.Text = "Move previous";
-            // 
-            // bindingNavigatorSeparator
-            // 
-            this.bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 25);
-            // 
-            // bindingNavigatorPositionItem
-            // 
-            this.bindingNavigatorPositionItem.AccessibleName = "Position";
-            this.bindingNavigatorPositionItem.AutoSize = false;
-            this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
-            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 21);
-            this.bindingNavigatorPositionItem.Text = "0";
-            this.bindingNavigatorPositionItem.ToolTipText = "Current position";
-            // 
-            // bindingNavigatorSeparator1
-            // 
-            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
-            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // bindingNavigatorMoveNextItem
-            // 
-            this.bindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
-            this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
-            this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveNextItem.Text = "Move next";
-            // 
-            // bindingNavigatorMoveLastItem
-            // 
-            this.bindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
-            this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
-            this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveLastItem.Text = "Move last";
-            // 
-            // bindingNavigatorSeparator2
-            // 
-            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
-            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // clientesBindingNavigatorSaveItem
-            // 
-            this.clientesBindingNavigatorSaveItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.clientesBindingNavigatorSaveItem.Image = ((System.Drawing.Image)(resources.GetObject("clientesBindingNavigatorSaveItem.Image")));
-            this.clientesBindingNavigatorSaveItem.Name = "clientesBindingNavigatorSaveItem";
-            this.clientesBindingNavigatorSaveItem.Size = new System.Drawing.Size(23, 22);
-            this.clientesBindingNavigatorSaveItem.Text = "Save Data";
+            this.buttonAddEvol.Image = global::WindowsFormsApplication1.Properties.Resources.button_add_mini1;
+            this.buttonAddEvol.Location = new System.Drawing.Point(6, 3);
+            this.buttonAddEvol.Name = "buttonAddEvol";
+            this.buttonAddEvol.Size = new System.Drawing.Size(527, 23);
+            this.buttonAddEvol.TabIndex = 17;
+            this.buttonAddEvol.UseVisualStyleBackColor = true;
+            this.buttonAddEvol.Click += new System.EventHandler(this.buttonAddEvol_Click);
             // 
             // dataRepeater1
             // 
@@ -1951,6 +1825,13 @@
             this.dataRepeater1.Size = new System.Drawing.Size(1189, 619);
             this.dataRepeater1.TabIndex = 0;
             this.dataRepeater1.Text = "dataRepeater1";
+            // 
+            // textOCodenfermo
+            // 
+            this.textOCodenfermo.Location = new System.Drawing.Point(692, 3);
+            this.textOCodenfermo.Name = "textOCodenfermo";
+            this.textOCodenfermo.Size = new System.Drawing.Size(140, 20);
+            this.textOCodenfermo.TabIndex = 16;
             // 
             // labelOCodenfermo
             // 
@@ -2012,6 +1893,16 @@
             this.datePickEvo.Size = new System.Drawing.Size(269, 20);
             this.datePickEvo.TabIndex = 10;
             // 
+            // clientesBindingSource
+            // 
+            this.clientesBindingSource.DataMember = "clientes";
+            this.clientesBindingSource.DataSource = this.gestionDataSet;
+            // 
+            // gestionDataSet
+            // 
+            this.gestionDataSet.DataSetName = "gestionDataSet";
+            this.gestionDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // treeSlider
             // 
             this.treeSlider.Location = new System.Drawing.Point(0, 71);
@@ -2057,6 +1948,23 @@
             this.comboEnfermo.TabIndex = 6;
             this.comboEnfermo.SelectedIndexChanged += new System.EventHandler(this.comboEnfermo_SelectedIndexChanged);
             // 
+            // clientesTableAdapter
+            // 
+            this.clientesTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.clientesTableAdapter = this.clientesTableAdapter;
+            this.tableAdapterManager.UpdateOrder = WindowsFormsApplication1.gestionDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
+            // textDebug
+            // 
+            this.textDebug.Location = new System.Drawing.Point(1036, 39);
+            this.textDebug.Name = "textDebug";
+            this.textDebug.Size = new System.Drawing.Size(320, 20);
+            this.textDebug.TabIndex = 10;
+            // 
             // buttonAddEnfermo
             // 
             this.buttonAddEnfermo.Image = global::WindowsFormsApplication1.Properties.Resources.button_add_mini1;
@@ -2076,30 +1984,6 @@
             this.button1.TabIndex = 7;
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // clientesTableAdapter
-            // 
-            this.clientesTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.clientesTableAdapter = this.clientesTableAdapter;
-            this.tableAdapterManager.UpdateOrder = WindowsFormsApplication1.gestionDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
-            // textDebug
-            // 
-            this.textDebug.Location = new System.Drawing.Point(1036, 39);
-            this.textDebug.Name = "textDebug";
-            this.textDebug.Size = new System.Drawing.Size(320, 20);
-            this.textDebug.TabIndex = 10;
-            // 
-            // textOCodenfermo
-            // 
-            this.textOCodenfermo.Location = new System.Drawing.Point(692, 3);
-            this.textOCodenfermo.Name = "textOCodenfermo";
-            this.textOCodenfermo.Size = new System.Drawing.Size(140, 20);
-            this.textOCodenfermo.TabIndex = 16;
             // 
             // Form1
             // 
@@ -2129,15 +2013,11 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabPageEvolu.ResumeLayout(false);
-            this.tabPageEvolu.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.clientesBindingNavigator)).EndInit();
-            this.clientesBindingNavigator.ResumeLayout(false);
-            this.clientesBindingNavigator.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gestionDataSet)).EndInit();
             this.dataRepeater1.ItemTemplate.ResumeLayout(false);
             this.dataRepeater1.ItemTemplate.PerformLayout();
             this.dataRepeater1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gestionDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2258,19 +2138,6 @@
         private System.Windows.Forms.BindingSource clientesBindingSource;
         private gestionDataSetTableAdapters.clientesTableAdapter clientesTableAdapter;
         private gestionDataSetTableAdapters.TableAdapterManager tableAdapterManager;
-        private System.Windows.Forms.BindingNavigator clientesBindingNavigator;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
-        private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorDeleteItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator;
-        private System.Windows.Forms.ToolStripTextBox bindingNavigatorPositionItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator1;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
-        private System.Windows.Forms.ToolStripButton clientesBindingNavigatorSaveItem;
         private System.Windows.Forms.RichTextBox richEvo;
         private System.Windows.Forms.DateTimePicker datePickEvo;
         private System.Windows.Forms.Label label35;
@@ -2280,6 +2147,8 @@
         private System.Windows.Forms.TextBox textOSerial;
         private System.Windows.Forms.Label labelOSerial;
         private System.Windows.Forms.TextBox textOCodenfermo;
+        private System.Windows.Forms.Button buttonSaveEvol;
+        private System.Windows.Forms.Button buttonAddEvol;
     }
 }
 

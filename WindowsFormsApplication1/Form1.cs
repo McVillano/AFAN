@@ -28,8 +28,6 @@ namespace WindowsFormsApplication1
             labelOSerial.Visible = false;
             textOCodenfermo.Visible = false;
             textOSerial.Visible = false;
-            //Test GitHub
-            //Test2 Github
         }
 
         public void updateForm1(string id, string nombre, string nif, OdbcConnection conn)
@@ -587,11 +585,14 @@ namespace WindowsFormsApplication1
             //Conectar la Informacion con sus Campos
             datePickEvo.DataBindings.Add("Value", da, "fecha");
             textOCodenfermo.DataBindings.Add("Text", da, "codenfermo");
-            textOSerial.DataBindings.Add("Text", da, "serial");
+            textOSerial.DataBindings.Add("Text", da, "id");
             richEvo.DataBindings.Add("Text", da, "observacion");
             comboPerfil.DataBindings.Add("Text", da, "perfil");
             dataRepeater1.Visible = true;
             dataRepeater1.DataSource = ds.Tables[0];
+
+            //Una vez cargados los evolutivos abrimos un espacion nuevo para el siguiente
+            dataRepeater1.AddNew();
         }
 
         private void loadLeftSlider()
@@ -612,8 +613,59 @@ namespace WindowsFormsApplication1
         private void treeSlider_AfterSelect(object sender, TreeViewEventArgs e)
         {
             tabControlMain.SelectTab(1);
-            int selectedIndex = treeSlider.SelectedNode.Index;
-            dataRepeater1.CurrentItemIndex = selectedIndex;
+            dataRepeater1.CurrentItemIndex = treeSlider.SelectedNode.Index;
+        }
+
+        private int getLasRepeater()
+        {
+            return (dataRepeater1.ItemCount - 1);
+        }
+
+        private void upsertSelected()
+        {
+            //Preparamos los datos de la inserción
+            string serial = dataRepeater1.CurrentItem.Controls["textOSerial"].Text;
+            string codenfermo = dataRepeater1.CurrentItem.Controls["textOCodenfermo"].Text;
+            string fecha = dataRepeater1.CurrentItem.Controls["datePickEvo"].ToString();
+            string[] token = fecha.Split(' ');
+            string[] fechas = token[2].Split('/');
+            fecha = fechas[0] + "-" + fechas[1] + "-" + fechas[2];
+            string perfil = dataRepeater1.CurrentItem.Controls["comboPerfil"].Text;
+            string observacion = dataRepeater1.CurrentItem.Controls["richEvo"].Text;
+
+            //Preparamos la query
+            string query = "";
+            if (String.IsNullOrWhiteSpace(serial))
+            {
+                query = "INSERT INTO evolutivo(codenfermo,fecha,observacion,perfil) VALUES('" + getEnfermo() + "','" + fecha + "','" + observacion + "','" + perfil + "')";
+            }
+            else
+            {
+                query = "UPDATE evolutivo SET fecha='" + fecha + "',observacion='" + observacion + "' WHERE id='" + serial + "'";
+            }
+
+            //Insertamos o modificamos la BBDD
+            OdbcConnection conn = this.clientesTableAdapter.Connection;
+            OdbcCommand cmd = new OdbcCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = query;
+            cmd.Connection = conn;
+            conn.Open();
+            cmd.ExecuteNonQuery();
+            conn.Close();
+        }
+
+        private void buttonAddEvol_Click(object sender, EventArgs e)
+        {
+
+            dataRepeater1.CurrentItemIndex = getLasRepeater();
+            upsertSelected();
+            dataRepeater1.AddNew();
+        }
+
+        private void buttonSaveEvol_Click(object sender, EventArgs e)
+        {
+            upsertSelected();
         }
     }
 }
