@@ -7,8 +7,8 @@
     <ProjectGuid>{43992CCD-6ADB-40CB-92EB-C3440AA8D784}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WindowsFormsApplication1</RootNamespace>
-    <AssemblyName>WindowsFormsApplication1</AssemblyName>
+    <RootNamespace>Afan</RootNamespace>
+    <AssemblyName>Afan</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -46,6 +46,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>AFAN.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic" />
@@ -120,7 +123,6 @@
     </None>
     <None Include="gestionDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>gestionDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
     <None Include="gestionDataSet.xss">
@@ -189,6 +191,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\save_mini.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AFAN.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

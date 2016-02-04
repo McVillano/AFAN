@@ -43,7 +43,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.clientesTableAdapter = new WindowsFormsApplication1.gestionDataSetTableAdapters.clientesTableAdapter();
             this.groupSocio.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -71,7 +70,7 @@
             // 
             // button1
             // 
-            this.button1.Image = global::WindowsFormsApplication1.Properties.Resources.button_add_5121;
+            this.button1.Image = global::Afan.Properties.Resources.button_add_5121;
             this.button1.Location = new System.Drawing.Point(366, 157);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(61, 54);
@@ -179,10 +178,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Código:";
             // 
-            // clientesTableAdapter
-            // 
-            this.clientesTableAdapter.ClearBeforeFill = true;
-            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -216,6 +211,5 @@
         private System.Windows.Forms.ComboBox comboSexo;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button1;
-        private gestionDataSetTableAdapters.clientesTableAdapter clientesTableAdapter;
     }
 }

@@ -143,14 +143,11 @@
             this.richEvo = new System.Windows.Forms.RichTextBox();
             this.datePickEvo = new System.Windows.Forms.DateTimePicker();
             this.clientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.gestionDataSet = new WindowsFormsApplication1.gestionDataSet();
             this.treeSlider = new System.Windows.Forms.TreeView();
             this.textSocio = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.comboEnfermo = new System.Windows.Forms.ComboBox();
-            this.clientesTableAdapter = new WindowsFormsApplication1.gestionDataSetTableAdapters.clientesTableAdapter();
-            this.tableAdapterManager = new WindowsFormsApplication1.gestionDataSetTableAdapters.TableAdapterManager();
             this.textDebug = new System.Windows.Forms.TextBox();
             this.buttonAddEnfermo = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -163,7 +160,6 @@
             this.dataRepeater1.ItemTemplate.SuspendLayout();
             this.dataRepeater1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gestionDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -313,7 +309,7 @@
             // 
             // buttonSave
             // 
-            this.buttonSave.Image = global::WindowsFormsApplication1.Properties.Resources.save;
+            this.buttonSave.Image = global::Afan.Properties.Resources.save;
             this.buttonSave.Location = new System.Drawing.Point(6, 557);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(158, 84);
@@ -323,7 +319,7 @@
             // 
             // btnAddTrat
             // 
-            this.btnAddTrat.Image = global::WindowsFormsApplication1.Properties.Resources.button_add_5121;
+            this.btnAddTrat.Image = global::Afan.Properties.Resources.button_add_5121;
             this.btnAddTrat.Location = new System.Drawing.Point(609, 581);
             this.btnAddTrat.Name = "btnAddTrat";
             this.btnAddTrat.Size = new System.Drawing.Size(68, 60);
@@ -1785,7 +1781,7 @@
             // 
             // buttonSaveEvol
             // 
-            this.buttonSaveEvol.Image = global::WindowsFormsApplication1.Properties.Resources.save_mini;
+            this.buttonSaveEvol.Image = global::Afan.Properties.Resources.save_mini;
             this.buttonSaveEvol.Location = new System.Drawing.Point(539, 3);
             this.buttonSaveEvol.Name = "buttonSaveEvol";
             this.buttonSaveEvol.Size = new System.Drawing.Size(642, 23);
@@ -1795,7 +1791,7 @@
             // 
             // buttonAddEvol
             // 
-            this.buttonAddEvol.Image = global::WindowsFormsApplication1.Properties.Resources.button_add_mini1;
+            this.buttonAddEvol.Image = global::Afan.Properties.Resources.button_add_mini1;
             this.buttonAddEvol.Location = new System.Drawing.Point(6, 3);
             this.buttonAddEvol.Name = "buttonAddEvol";
             this.buttonAddEvol.Size = new System.Drawing.Size(527, 23);
@@ -1893,16 +1889,6 @@
             this.datePickEvo.Size = new System.Drawing.Size(269, 20);
             this.datePickEvo.TabIndex = 10;
             // 
-            // clientesBindingSource
-            // 
-            this.clientesBindingSource.DataMember = "clientes";
-            this.clientesBindingSource.DataSource = this.gestionDataSet;
-            // 
-            // gestionDataSet
-            // 
-            this.gestionDataSet.DataSetName = "gestionDataSet";
-            this.gestionDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // treeSlider
             // 
             this.treeSlider.Location = new System.Drawing.Point(0, 71);
@@ -1948,16 +1934,6 @@
             this.comboEnfermo.TabIndex = 6;
             this.comboEnfermo.SelectedIndexChanged += new System.EventHandler(this.comboEnfermo_SelectedIndexChanged);
             // 
-            // clientesTableAdapter
-            // 
-            this.clientesTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.clientesTableAdapter = this.clientesTableAdapter;
-            this.tableAdapterManager.UpdateOrder = WindowsFormsApplication1.gestionDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
             // textDebug
             // 
             this.textDebug.Location = new System.Drawing.Point(1036, 39);
@@ -1967,7 +1943,7 @@
             // 
             // buttonAddEnfermo
             // 
-            this.buttonAddEnfermo.Image = global::WindowsFormsApplication1.Properties.Resources.button_add_mini1;
+            this.buttonAddEnfermo.Image = global::Afan.Properties.Resources.button_add_mini1;
             this.buttonAddEnfermo.Location = new System.Drawing.Point(964, 31);
             this.buttonAddEnfermo.Name = "buttonAddEnfermo";
             this.buttonAddEnfermo.Size = new System.Drawing.Size(39, 34);
@@ -1977,7 +1953,7 @@
             // 
             // button1
             // 
-            this.button1.Image = global::WindowsFormsApplication1.Properties.Resources.search_256;
+            this.button1.Image = global::Afan.Properties.Resources.search_256;
             this.button1.Location = new System.Drawing.Point(0, 27);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(178, 38);
@@ -2017,7 +1993,6 @@
             this.dataRepeater1.ItemTemplate.PerformLayout();
             this.dataRepeater1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gestionDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2134,10 +2109,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Tratamiento;
         private System.Windows.Forms.Button buttonAddEnfermo;
         private Microsoft.VisualBasic.PowerPacks.DataRepeater dataRepeater1;
-        private gestionDataSet gestionDataSet;
         private System.Windows.Forms.BindingSource clientesBindingSource;
-        private gestionDataSetTableAdapters.clientesTableAdapter clientesTableAdapter;
-        private gestionDataSetTableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.RichTextBox richEvo;
         private System.Windows.Forms.DateTimePicker datePickEvo;
         private System.Windows.Forms.Label label35;

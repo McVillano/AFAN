@@ -36,19 +36,13 @@
             this.comboFiltro = new System.Windows.Forms.ComboBox();
             this.labelTipo = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.codclienteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cifnifDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clientesBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
-            this.gestionDataSet = new WindowsFormsApplication1.gestionDataSet();
             this.clientesBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.clientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.clientesTableAdapter1 = new WindowsFormsApplication1.gestionDataSetTableAdapters.clientesTableAdapter();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.buttonAdd = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gestionDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -110,10 +104,6 @@
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.codclienteDataGridViewTextBoxColumn,
-            this.cifnifDataGridViewTextBoxColumn,
-            this.nombreDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.clientesBindingSource2;
             this.dataGridView1.Location = new System.Drawing.Point(12, 12);
             this.dataGridView1.Name = "dataGridView1";
@@ -122,42 +112,6 @@
             this.dataGridView1.TabIndex = 6;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // codclienteDataGridViewTextBoxColumn
-            // 
-            this.codclienteDataGridViewTextBoxColumn.DataPropertyName = "codcliente";
-            this.codclienteDataGridViewTextBoxColumn.HeaderText = "Nº De Socio";
-            this.codclienteDataGridViewTextBoxColumn.Name = "codclienteDataGridViewTextBoxColumn";
-            this.codclienteDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // cifnifDataGridViewTextBoxColumn
-            // 
-            this.cifnifDataGridViewTextBoxColumn.DataPropertyName = "cifnif";
-            this.cifnifDataGridViewTextBoxColumn.HeaderText = "DNI";
-            this.cifnifDataGridViewTextBoxColumn.Name = "cifnifDataGridViewTextBoxColumn";
-            this.cifnifDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // nombreDataGridViewTextBoxColumn
-            // 
-            this.nombreDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.nombreDataGridViewTextBoxColumn.DataPropertyName = "nombre";
-            this.nombreDataGridViewTextBoxColumn.HeaderText = "Nombre";
-            this.nombreDataGridViewTextBoxColumn.Name = "nombreDataGridViewTextBoxColumn";
-            this.nombreDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // clientesBindingSource2
-            // 
-            this.clientesBindingSource2.DataMember = "clientes";
-            this.clientesBindingSource2.DataSource = this.gestionDataSet;
-            // 
-            // gestionDataSet
-            // 
-            this.gestionDataSet.DataSetName = "gestionDataSet";
-            this.gestionDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // clientesTableAdapter1
-            // 
-            this.clientesTableAdapter1.ClearBeforeFill = true;
-            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Name = "contextMenuStrip1";
@@ -165,7 +119,7 @@
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Image = global::WindowsFormsApplication1.Properties.Resources.button_add_5121;
+            this.buttonAdd.Image = global::Afan.Properties.Resources.button_add_5121;
             this.buttonAdd.Location = new System.Drawing.Point(822, 123);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(75, 70);
@@ -177,7 +131,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.Fondo_1;
+            this.BackgroundImage = global::Afan.Properties.Resources.Fondo_1;
             this.ClientSize = new System.Drawing.Size(902, 573);
             this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.dataGridView1);
@@ -197,7 +151,6 @@
             this.Load += new System.EventHandler(this.Form2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gestionDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -214,12 +167,7 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.BindingSource clientesBindingSource;
         private System.Windows.Forms.BindingSource clientesBindingSource1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codclienteDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cifnifDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nombreDataGridViewTextBoxColumn;
-        private gestionDataSet gestionDataSet;
         private System.Windows.Forms.BindingSource clientesBindingSource2;
-        private gestionDataSetTableAdapters.clientesTableAdapter clientesTableAdapter1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.Button buttonAdd;
     }

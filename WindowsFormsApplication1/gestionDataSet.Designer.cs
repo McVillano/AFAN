@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace WindowsFormsApplication1 {
+namespace Afan {
     
     
     /// <summary>
@@ -646,7 +646,7 @@ namespace WindowsFormsApplication1 {
         }
     }
 }
-namespace WindowsFormsApplication1.gestionDataSetTableAdapters {
+namespace Afan.gestionDataSetTableAdapters {
     
     
     /// <summary>
@@ -799,7 +799,7 @@ namespace WindowsFormsApplication1.gestionDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.Odbc.OdbcConnection();
-            this._connection.ConnectionString = global::WindowsFormsApplication1.Properties.Settings.Default.gestionConnectionString;
+            this._connection.ConnectionString = global::Afan.Properties.Settings.Default.gestionConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
