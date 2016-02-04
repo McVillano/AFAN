@@ -49,6 +49,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.clientesTableAdapter = new Afan.gestionDataSetTableAdapters.clientesTableAdapter();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -242,6 +243,10 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Código : ";
             // 
+            // clientesTableAdapter
+            // 
+            this.clientesTableAdapter.ClearBeforeFill = true;
+            // 
             // Form4
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -281,5 +286,6 @@
         private System.Windows.Forms.Button buttonAddEnfermo;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox textParentesco;
+        private Afan.gestionDataSetTableAdapters.clientesTableAdapter clientesTableAdapter;
     }
 }

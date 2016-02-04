@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -142,7 +141,6 @@
             this.comboPerfil = new System.Windows.Forms.ComboBox();
             this.richEvo = new System.Windows.Forms.RichTextBox();
             this.datePickEvo = new System.Windows.Forms.DateTimePicker();
-            this.clientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.treeSlider = new System.Windows.Forms.TreeView();
             this.textSocio = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -151,6 +149,8 @@
             this.textDebug = new System.Windows.Forms.TextBox();
             this.buttonAddEnfermo = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.gestionDataSet = new Afan.gestionDataSet();
+            this.clientesTableAdapter = new Afan.gestionDataSetTableAdapters.clientesTableAdapter();
             this.menuStrip1.SuspendLayout();
             this.tabControlMain.SuspendLayout();
             this.tabPageSocial.SuspendLayout();
@@ -159,7 +159,7 @@
             this.tabPageEvolu.SuspendLayout();
             this.dataRepeater1.ItemTemplate.SuspendLayout();
             this.dataRepeater1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gestionDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -169,7 +169,7 @@
             this.ayudaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1380, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1346, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -208,7 +208,7 @@
             this.tabControlMain.Location = new System.Drawing.Point(183, 71);
             this.tabControlMain.Name = "tabControlMain";
             this.tabControlMain.SelectedIndex = 0;
-            this.tabControlMain.Size = new System.Drawing.Size(1197, 679);
+            this.tabControlMain.Size = new System.Drawing.Size(1163, 679);
             this.tabControlMain.TabIndex = 2;
             // 
             // tabPageSocial
@@ -302,7 +302,7 @@
             this.tabPageSocial.Location = new System.Drawing.Point(4, 22);
             this.tabPageSocial.Name = "tabPageSocial";
             this.tabPageSocial.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageSocial.Size = new System.Drawing.Size(1189, 653);
+            this.tabPageSocial.Size = new System.Drawing.Size(1155, 653);
             this.tabPageSocial.TabIndex = 0;
             this.tabPageSocial.Text = "Trabajo Social";
             this.tabPageSocial.UseVisualStyleBackColor = true;
@@ -1774,7 +1774,7 @@
             this.tabPageEvolu.Location = new System.Drawing.Point(4, 22);
             this.tabPageEvolu.Name = "tabPageEvolu";
             this.tabPageEvolu.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageEvolu.Size = new System.Drawing.Size(1189, 653);
+            this.tabPageEvolu.Size = new System.Drawing.Size(1155, 653);
             this.tabPageEvolu.TabIndex = 1;
             this.tabPageEvolu.Text = "Evolutivos";
             this.tabPageEvolu.UseVisualStyleBackColor = true;
@@ -1784,7 +1784,7 @@
             this.buttonSaveEvol.Image = global::Afan.Properties.Resources.save_mini;
             this.buttonSaveEvol.Location = new System.Drawing.Point(539, 3);
             this.buttonSaveEvol.Name = "buttonSaveEvol";
-            this.buttonSaveEvol.Size = new System.Drawing.Size(642, 23);
+            this.buttonSaveEvol.Size = new System.Drawing.Size(613, 23);
             this.buttonSaveEvol.TabIndex = 17;
             this.buttonSaveEvol.UseVisualStyleBackColor = true;
             this.buttonSaveEvol.Click += new System.EventHandler(this.buttonSaveEvol_Click);
@@ -1815,10 +1815,10 @@
             this.dataRepeater1.ItemTemplate.Controls.Add(this.comboPerfil);
             this.dataRepeater1.ItemTemplate.Controls.Add(this.richEvo);
             this.dataRepeater1.ItemTemplate.Controls.Add(this.datePickEvo);
-            this.dataRepeater1.ItemTemplate.Size = new System.Drawing.Size(1181, 112);
+            this.dataRepeater1.ItemTemplate.Size = new System.Drawing.Size(1147, 112);
             this.dataRepeater1.Location = new System.Drawing.Point(0, 31);
             this.dataRepeater1.Name = "dataRepeater1";
-            this.dataRepeater1.Size = new System.Drawing.Size(1189, 619);
+            this.dataRepeater1.Size = new System.Drawing.Size(1155, 619);
             this.dataRepeater1.TabIndex = 0;
             this.dataRepeater1.Text = "dataRepeater1";
             // 
@@ -1878,7 +1878,7 @@
             // 
             this.richEvo.Location = new System.Drawing.Point(3, 29);
             this.richEvo.Name = "richEvo";
-            this.richEvo.Size = new System.Drawing.Size(1159, 79);
+            this.richEvo.Size = new System.Drawing.Size(1129, 79);
             this.richEvo.TabIndex = 11;
             this.richEvo.Text = "";
             // 
@@ -1893,7 +1893,7 @@
             // 
             this.treeSlider.Location = new System.Drawing.Point(0, 71);
             this.treeSlider.Name = "treeSlider";
-            this.treeSlider.Size = new System.Drawing.Size(177, 711);
+            this.treeSlider.Size = new System.Drawing.Size(177, 679);
             this.treeSlider.TabIndex = 0;
             this.treeSlider.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeSlider_AfterSelect);
             // 
@@ -1961,11 +1961,20 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // gestionDataSet
+            // 
+            this.gestionDataSet.DataSetName = "gestionDataSet";
+            this.gestionDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // clientesTableAdapter
+            // 
+            this.clientesTableAdapter.ClearBeforeFill = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1380, 749);
+            this.ClientSize = new System.Drawing.Size(1346, 752);
             this.Controls.Add(this.textDebug);
             this.Controls.Add(this.buttonAddEnfermo);
             this.Controls.Add(this.button1);
@@ -1980,6 +1989,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "AFAN";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.tabControlMain.ResumeLayout(false);
@@ -1992,7 +2002,7 @@
             this.dataRepeater1.ItemTemplate.ResumeLayout(false);
             this.dataRepeater1.ItemTemplate.PerformLayout();
             this.dataRepeater1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gestionDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2109,7 +2119,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Tratamiento;
         private System.Windows.Forms.Button buttonAddEnfermo;
         private Microsoft.VisualBasic.PowerPacks.DataRepeater dataRepeater1;
-        private System.Windows.Forms.BindingSource clientesBindingSource;
         private System.Windows.Forms.RichTextBox richEvo;
         private System.Windows.Forms.DateTimePicker datePickEvo;
         private System.Windows.Forms.Label label35;
@@ -2121,6 +2130,8 @@
         private System.Windows.Forms.TextBox textOCodenfermo;
         private System.Windows.Forms.Button buttonSaveEvol;
         private System.Windows.Forms.Button buttonAddEvol;
+        private Afan.gestionDataSet gestionDataSet;
+        private Afan.gestionDataSetTableAdapters.clientesTableAdapter clientesTableAdapter;
     }
 }
 

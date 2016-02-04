@@ -35,16 +35,18 @@
             this.btnBuscar = new System.Windows.Forms.Button();
             this.comboFiltro = new System.Windows.Forms.ComboBox();
             this.labelTipo = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.clientesBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
-            this.clientesBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.clientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.buttonAdd = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource1)).BeginInit();
+            this.gestionDataSet = new Afan.gestionDataSet();
+            this.clientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.clientesTableAdapter = new Afan.gestionDataSetTableAdapters.clientesTableAdapter();
+            this.tableAdapterManager = new Afan.gestionDataSetTableAdapters.TableAdapterManager();
+            this.clientesDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.gestionDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.clientesDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // txtFiltro
@@ -98,25 +100,6 @@
             this.labelTipo.TabIndex = 5;
             this.labelTipo.Text = "Tipo:";
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.DataSource = this.clientesBindingSource2;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 12);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(583, 543);
-            this.dataGridView1.TabIndex = 6;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
-            // 
             // buttonAdd
             // 
             this.buttonAdd.Image = global::Afan.Properties.Resources.button_add_5121;
@@ -127,14 +110,75 @@
             this.buttonAdd.UseVisualStyleBackColor = true;
             this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
+            // gestionDataSet
+            // 
+            this.gestionDataSet.DataSetName = "gestionDataSet";
+            this.gestionDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // clientesBindingSource
+            // 
+            this.clientesBindingSource.DataMember = "clientes";
+            this.clientesBindingSource.DataSource = this.gestionDataSet;
+            // 
+            // clientesTableAdapter
+            // 
+            this.clientesTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.clientesTableAdapter = this.clientesTableAdapter;
+            this.tableAdapterManager.UpdateOrder = Afan.gestionDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
+            // clientesDataGridView
+            // 
+            this.clientesDataGridView.AllowUserToAddRows = false;
+            this.clientesDataGridView.AllowUserToDeleteRows = false;
+            this.clientesDataGridView.AutoGenerateColumns = false;
+            this.clientesDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.clientesDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3});
+            this.clientesDataGridView.DataSource = this.clientesBindingSource;
+            this.clientesDataGridView.Location = new System.Drawing.Point(12, 12);
+            this.clientesDataGridView.Name = "clientesDataGridView";
+            this.clientesDataGridView.ReadOnly = true;
+            this.clientesDataGridView.Size = new System.Drawing.Size(587, 549);
+            this.clientesDataGridView.TabIndex = 10;
+            this.clientesDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.clientesDataGridView_CellContentClick_1);
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "codcliente";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Código";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "cifnif";
+            this.dataGridViewTextBoxColumn2.HeaderText = "DNI";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "nombre";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Nombre";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackgroundImage = global::Afan.Properties.Resources.Fondo_1;
             this.ClientSize = new System.Drawing.Size(902, 573);
+            this.Controls.Add(this.clientesDataGridView);
             this.Controls.Add(this.buttonAdd);
-            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.labelTipo);
             this.Controls.Add(this.comboFiltro);
             this.Controls.Add(this.btnBuscar);
@@ -149,10 +193,9 @@
             this.ShowInTaskbar = false;
             this.Text = "Busqueda de Socios";
             this.Load += new System.EventHandler(this.Form2_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gestionDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.clientesDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -164,11 +207,14 @@
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.ComboBox comboFiltro;
         private System.Windows.Forms.Label labelTipo;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.BindingSource clientesBindingSource;
-        private System.Windows.Forms.BindingSource clientesBindingSource1;
-        private System.Windows.Forms.BindingSource clientesBindingSource2;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.Button buttonAdd;
+        private Afan.gestionDataSet gestionDataSet;
+        private System.Windows.Forms.BindingSource clientesBindingSource;
+        private Afan.gestionDataSetTableAdapters.clientesTableAdapter clientesTableAdapter;
+        private Afan.gestionDataSetTableAdapters.TableAdapterManager tableAdapterManager;
+        private System.Windows.Forms.DataGridView clientesDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
     }
 }
