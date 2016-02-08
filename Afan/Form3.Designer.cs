@@ -194,6 +194,7 @@
             this.MinimizeBox = false;
             this.Name = "Form3";
             this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Nuevo Socio";
             this.groupSocio.ResumeLayout(false);
             this.groupSocio.PerformLayout();

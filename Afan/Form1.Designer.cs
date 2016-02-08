@@ -141,6 +141,13 @@
             this.comboPerfil = new System.Windows.Forms.ComboBox();
             this.richEvo = new System.Windows.Forms.RichTextBox();
             this.datePickEvo = new System.Windows.Forms.DateTimePicker();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.treeSlider = new System.Windows.Forms.TreeView();
             this.textSocio = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -151,10 +158,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.gestionDataSet = new Afan.gestionDataSet();
             this.clientesTableAdapter = new Afan.gestionDataSetTableAdapters.clientesTableAdapter();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tabControlMain.SuspendLayout();
             this.tabPageSocial.SuspendLayout();
@@ -163,8 +166,10 @@
             this.tabPageEvolu.SuspendLayout();
             this.dataRepeater1.ItemTemplate.SuspendLayout();
             this.dataRepeater1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gestionDataSet)).BeginInit();
             this.tabPage1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gestionDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -189,8 +194,9 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "E&xit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // ayudaToolStripMenuItem
             // 
@@ -605,7 +611,8 @@
             this.comboModJur.Items.AddRange(new object[] {
             "Si",
             "No",
-            "En Proceso"});
+            "En Proceso",
+            "No sabe/No Contesta"});
             this.comboModJur.Location = new System.Drawing.Point(968, 333);
             this.comboModJur.Name = "comboModJur";
             this.comboModJur.Size = new System.Drawing.Size(181, 21);
@@ -617,7 +624,8 @@
             this.comboAyTec.Items.AddRange(new object[] {
             "Si",
             "No",
-            "Solo Algunos"});
+            "Solo Algunos",
+            "No sabe/No contesta"});
             this.comboAyTec.Location = new System.Drawing.Point(949, 303);
             this.comboAyTec.Name = "comboAyTec";
             this.comboAyTec.Size = new System.Drawing.Size(200, 21);
@@ -646,7 +654,8 @@
             this.comboReAyudas.FormattingEnabled = true;
             this.comboReAyudas.Items.AddRange(new object[] {
             "Si",
-            "No"});
+            "No",
+            "No sabe/No contesta"});
             this.comboReAyudas.Location = new System.Drawing.Point(949, 273);
             this.comboReAyudas.Name = "comboReAyudas";
             this.comboReAyudas.Size = new System.Drawing.Size(200, 21);
@@ -667,7 +676,8 @@
             this.comboVAcess.Items.AddRange(new object[] {
             "Si",
             "No",
-            "Sólo Algunas"});
+            "Sólo Algunas",
+            "No sabe/No contesta"});
             this.comboVAcess.Location = new System.Drawing.Point(949, 243);
             this.comboVAcess.Name = "comboVAcess";
             this.comboVAcess.Size = new System.Drawing.Size(200, 21);
@@ -768,7 +778,8 @@
             "Hijo/a",
             "Hermano/a",
             "Otro Familiar",
-            "No es Familiar"});
+            "No es Familiar",
+            "No sabe/No contesta"});
             this.comboRCuidador.Location = new System.Drawing.Point(571, 333);
             this.comboRCuidador.Name = "comboRCuidador";
             this.comboRCuidador.Size = new System.Drawing.Size(200, 21);
@@ -873,7 +884,8 @@
             "Con hijos/as",
             "Con el/la conyuge",
             "Con otros familiares",
-            "Con otros no familiares"});
+            "Con otros no familiares",
+            "No sabe/No contesta"});
             this.comboNConvivencia.Location = new System.Drawing.Point(571, 243);
             this.comboNConvivencia.Name = "comboNConvivencia";
             this.comboNConvivencia.Size = new System.Drawing.Size(200, 21);
@@ -905,7 +917,8 @@
             "En su domicilio acompañado",
             "Residencia",
             "Piso tutelado",
-            "Otros"});
+            "Otros",
+            "No sabe/No contesta"});
             this.comboLResi.Location = new System.Drawing.Point(571, 213);
             this.comboLResi.Name = "comboLResi";
             this.comboLResi.Size = new System.Drawing.Size(200, 21);
@@ -918,7 +931,8 @@
             "Sin grado reconocido",
             "Grado I",
             "Grado II",
-            "Grado III"});
+            "Grado III",
+            "No sabe/No contesta"});
             this.comboGDepen.Location = new System.Drawing.Point(571, 183);
             this.comboGDepen.Name = "comboGDepen";
             this.comboGDepen.Size = new System.Drawing.Size(200, 21);
@@ -943,7 +957,8 @@
             "Entre 45% y 54%",
             "Entre 55% y 64%",
             "Entre 65% y 74%",
-            "75% o más"});
+            "75% o más",
+            "No sabe/No contesta"});
             this.comboGDisca.Location = new System.Drawing.Point(571, 153);
             this.comboGDisca.Name = "comboGDisca";
             this.comboGDisca.Size = new System.Drawing.Size(200, 21);
@@ -965,7 +980,9 @@
             "Trabajando",
             "Baja laboral temporal",
             "Incapacidad laboral",
-            "Jubilado/a"});
+            "Jubilado/a",
+            "En paro",
+            "Otros"});
             this.comboLaboral.Location = new System.Drawing.Point(571, 93);
             this.comboLaboral.Name = "comboLaboral";
             this.comboLaboral.Size = new System.Drawing.Size(200, 21);
@@ -987,7 +1004,9 @@
             "Sin estudios basicos(Lectura, Escritura)",
             "Estudios Primarios",
             "Estudios Secundarios",
-            "Superiores"});
+            "Superiores",
+            "Otros",
+            "No sabe /No contesta"});
             this.comboNEducativo.Location = new System.Drawing.Point(571, 63);
             this.comboNEducativo.Name = "comboNEducativo";
             this.comboNEducativo.Size = new System.Drawing.Size(200, 21);
@@ -1013,7 +1032,10 @@
             "Otro subsidio o prestación",
             "SAAD- Prestación al servicio",
             "SAAD- Prestación de asistencia personal",
-            "SAAD- Prestación de apoyo al cuidado"});
+            "SAAD- Prestación de apoyo al cuidado",
+            "Otros",
+            "Ninguno",
+            "No sabe/No contesta"});
             this.comboPrestEco.Location = new System.Drawing.Point(949, 213);
             this.comboPrestEco.Name = "comboPrestEco";
             this.comboPrestEco.Size = new System.Drawing.Size(200, 21);
@@ -1038,7 +1060,8 @@
             this.comboIdiomas.Items.AddRange(new object[] {
             "Castellano",
             "Euskera",
-            "Indistitamente"});
+            "Indistitamente",
+            "Otros"});
             this.comboIdiomas.Location = new System.Drawing.Point(571, 33);
             this.comboIdiomas.Name = "comboIdiomas";
             this.comboIdiomas.Size = new System.Drawing.Size(200, 21);
@@ -1895,6 +1918,74 @@
             this.datePickEvo.Size = new System.Drawing.Size(269, 20);
             this.datePickEvo.TabIndex = 10;
             // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.groupBox2);
+            this.tabPage1.Controls.Add(this.dataGridView1);
+            this.tabPage1.Controls.Add(this.button3);
+            this.tabPage1.Controls.Add(this.button4);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(1155, 653);
+            this.tabPage1.TabIndex = 2;
+            this.tabPage1.Text = "Documentación";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.button2);
+            this.groupBox2.Controls.Add(this.richTextBox1);
+            this.groupBox2.Location = new System.Drawing.Point(522, 3);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(630, 644);
+            this.groupBox2.TabIndex = 2;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Imprimir Informe";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(6, 610);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(618, 28);
+            this.button2.TabIndex = 1;
+            this.button2.Text = "Exportar";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(6, 19);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(618, 585);
+            this.richTextBox1.TabIndex = 0;
+            this.richTextBox1.Text = "";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(6, 35);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(510, 612);
+            this.dataGridView1.TabIndex = 1;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(6, 6);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(252, 23);
+            this.button3.TabIndex = 0;
+            this.button3.Text = "Cargar Archivo";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(264, 6);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(252, 23);
+            this.button4.TabIndex = 0;
+            this.button4.Text = "Exportar Archivo";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
             // treeSlider
             // 
             this.treeSlider.Location = new System.Drawing.Point(0, 71);
@@ -1976,46 +2067,6 @@
             // 
             this.clientesTableAdapter.ClearBeforeFill = true;
             // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.button3);
-            this.tabPage1.Controls.Add(this.button4);
-            this.tabPage1.Controls.Add(this.button2);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1155, 653);
-            this.tabPage1.TabIndex = 2;
-            this.tabPage1.Text = "Documentación";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(3, 6);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(252, 23);
-            this.button2.TabIndex = 0;
-            this.button2.Text = "Inicializar Carpeta";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(261, 6);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(252, 23);
-            this.button3.TabIndex = 0;
-            this.button3.Text = "Cargar Archivo";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(519, 6);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(252, 23);
-            this.button4.TabIndex = 0;
-            this.button4.Text = "Exportar Archivo";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2034,8 +2085,8 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = ".";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.tabControlMain.ResumeLayout(false);
@@ -2048,8 +2099,10 @@
             this.dataRepeater1.ItemTemplate.ResumeLayout(false);
             this.dataRepeater1.ItemTemplate.PerformLayout();
             this.dataRepeater1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gestionDataSet)).EndInit();
             this.tabPage1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gestionDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2182,7 +2235,10 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
 

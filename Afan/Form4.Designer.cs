@@ -258,6 +258,7 @@
             this.MinimizeBox = false;
             this.Name = "Form4";
             this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Nuevo Enfermo";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

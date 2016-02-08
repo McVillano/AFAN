@@ -191,6 +191,7 @@
             this.MinimumSize = new System.Drawing.Size(910, 600);
             this.Name = "Form2";
             this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Busqueda de Socios";
             this.Load += new System.EventHandler(this.Form2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gestionDataSet)).EndInit();

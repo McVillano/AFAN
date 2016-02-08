@@ -28,6 +28,7 @@ namespace Afan
             labelOSerial.Visible = false;
             textOCodenfermo.Visible = false;
             textOSerial.Visible = false;
+            initDataRepeater();
         }
 
         public void updateForm1(string id, string nombre, string nif, OdbcConnection conn)
@@ -295,6 +296,8 @@ namespace Afan
                 dataGridTratamientos.Rows.Add(new String[] { row["fecha"].ToString(), row["observacion"].ToString() });
             }
             conn.Close();
+
+            //Load slider lateral
             loadLeftSlider();
         }
 
@@ -377,7 +380,17 @@ namespace Afan
             //Modificación de la Capacidad Juridica
             comboModJur.Text = "";
             //Fecha Fallecimiento
-            datePickFall.Value = dateInit;
+            datePickFall.Value = new DateTime(2025, 01, 01);
+
+            //Limpiamos Tratamientos
+            dataGridTratamientos.Rows.Clear();
+
+            //Limpiamos Evolutivos
+            DataSet clean = new DataSet();
+            dataRepeater1.DataSource = clean;
+
+            //Limpiamos Slider lateral
+            treeSlider.Nodes.Clear();
         }
 
         private void checkBox19_CheckedChanged(object sender, EventArgs e)
@@ -561,6 +574,36 @@ namespace Afan
             form4.Visible = true;
         }
 
+        private void initDataRepeater()
+        {
+            //Conectamos con la BBDD
+            OdbcConnection conn = this.clientesTableAdapter.Connection;
+            conn.Open();
+            OdbcCommand cmd = new OdbcCommand();
+            OdbcDataAdapter da = new OdbcDataAdapter();
+
+            //Preparamos la query
+            string query = "SELECT * FROM evolutivo WHERE codenfermo LIKE '" + getEnfermo() + "'";
+            cmd.CommandText = query;
+            da.SelectCommand = cmd;
+            cmd.Connection = conn;
+
+            //Creamos la DataSheet
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+
+            //Cerramos la conexion
+            conn.Close();
+
+            //Conectar la Informacion con sus Campos
+            datePickEvo.DataBindings.Add("Value", da, "fecha");
+            textOCodenfermo.DataBindings.Add("Text", da, "codenfermo");
+            textOSerial.DataBindings.Add("Text", da, "id");
+            richEvo.DataBindings.Add("Text", da, "observacion");
+            comboPerfil.DataBindings.Add("Text", da, "perfil");
+            dataRepeater1.Visible = true;
+        }
+
         private void loadDataRepeater()
         {
             //Conectamos con la BBDD
@@ -582,15 +625,9 @@ namespace Afan
             //Cerramos la conexion
             conn.Close();
 
-            //Conectar la Informacion con sus Campos
-            datePickEvo.DataBindings.Add("Value", da, "fecha");
-            textOCodenfermo.DataBindings.Add("Text", da, "codenfermo");
-            textOSerial.DataBindings.Add("Text", da, "id");
-            richEvo.DataBindings.Add("Text", da, "observacion");
-            comboPerfil.DataBindings.Add("Text", da, "perfil");
-            dataRepeater1.Visible = true;
+            //Conectar la Informacion con el DataRepeater
             dataRepeater1.DataSource = ds.Tables[0];
-
+            
             //Una vez cargados los evolutivos abrimos un espacion nuevo para el siguiente
             dataRepeater1.AddNew();
         }
@@ -641,7 +678,7 @@ namespace Afan
             }
             else
             {
-                query = "UPDATE evolutivo SET fecha='" + fecha + "',observacion='" + observacion + "' WHERE id='" + serial + "'";
+                query = "UPDATE evolutivo SET fecha='" + fecha + "',observacion='" + observacion + "',perfil='"+perfil+"' WHERE id='" + serial + "'";
             }
 
             //Insertamos o modificamos la BBDD
@@ -653,6 +690,8 @@ namespace Afan
             conn.Open();
             cmd.ExecuteNonQuery();
             conn.Close();
+
+            MessageBox.Show("Guardado");
         }
 
         private void buttonAddEvol_Click(object sender, EventArgs e)
@@ -668,11 +707,18 @@ namespace Afan
             upsertSelected();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        protected override void OnFormClosing(FormClosingEventArgs e)
         {
-            // TODO: This line of code loads data into the 'gestionDataSet.clientes' table. You can move, or remove it, as needed.
-            this.clientesTableAdapter.Fill(this.gestionDataSet.clientes);
+            DialogResult dr = MessageBox.Show("¿Esta seguro de que quiere salir?\r\nSe perderán los cambios no guardados", "Leaving App", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dr == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
+        }
 
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
