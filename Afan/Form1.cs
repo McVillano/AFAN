@@ -519,10 +519,14 @@ namespace Afan
             string graDep = comboGDepen.Text;
             string luRes = comboLResi.Text;
             string nuConv = comboNConvivencia.Text;
-            int nPer = int.Parse(textNPer.Text);
-            int nMen = int.Parse(textNMen.Text);
-            int nDep = int.Parse(textNDep.Text);
-            int nOt = int.Parse(textNOPat.Text);
+            int nPer=0;
+            if (!string.IsNullOrWhiteSpace(textNPer.Text)){ nPer = int.Parse(textNPer.Text); }
+            int nMen=0;
+            if (!string.IsNullOrWhiteSpace(textNMen.Text)) { nMen = int.Parse(textNMen.Text); }
+            int nDep=0;
+            if (!string.IsNullOrWhiteSpace(textNDep.Text)) { nDep = int.Parse(textNDep.Text); }
+            int nOt=0;
+            if (!string.IsNullOrWhiteSpace(textNOPat.Text)) { nOt = int.Parse(textNOPat.Text); }
             string cuidador = "";
             if (checkCuidador.Checked == true) {  cuidador = "TRUE";}
             else {  cuidador = "FALSE";}
@@ -560,8 +564,12 @@ namespace Afan
             cmd.CommandText = query;
             cmd.Connection = conn;
             conn.Open();
-            cmd.ExecuteNonQuery();
+            int ok = cmd.ExecuteNonQuery();
             conn.Close();
+            if (ok == 1)
+            {
+                MessageBox.Show("Información Guardada");
+            }
 
             //Refrescamos pantalla
             clearScreen();

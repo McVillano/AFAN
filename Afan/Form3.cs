@@ -48,11 +48,11 @@ namespace Afan
             cmd.CommandText = query;
             cmd.Connection = conn;
             conn.Open();
-            cmd.ExecuteNonQuery();
+            int ok=cmd.ExecuteNonQuery();
             conn.Close();
 
             //Comprobamos que la fila ha sido insertada
-            if ((code + 1) == getLastCode())
+            if (ok==1)
             {
                 MessageBox.Show("Socio añadido correctamente");
                 padre.updateForm21(codcliente, nombre, cifnif, conn);

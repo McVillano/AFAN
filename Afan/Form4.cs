@@ -47,11 +47,11 @@ namespace Afan
             cmd.CommandText = query;
             cmd.Connection = conn;
             conn.Open();
-            cmd.ExecuteNonQuery();
+            int ok1 = cmd.ExecuteNonQuery();
             conn.Close();
 
             //Comprobamos que la fila ha sido insertada
-            if ((code + 1) == getLastCode())
+            if (ok1==1)
             {
                 MessageBox.Show("Enfermo añadido correctamente");
                 int code2 = getLasSerial();
@@ -65,10 +65,10 @@ namespace Afan
                 cmd.CommandText = query2;
                 cmd.Connection = conn;
                 conn.Open();
-                cmd.ExecuteNonQuery();
+                int ok2 = cmd.ExecuteNonQuery();
                 conn.Close();
 
-                if ((code2 + 1)<=getLasSerial())
+                if (ok2==1)
                 {
                     MessageBox.Show("Enfermo y Socio relacionados");
                     padre.updateForm1(codcliente, conn);
