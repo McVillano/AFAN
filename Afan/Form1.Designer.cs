@@ -153,7 +153,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.comboEnfermo = new System.Windows.Forms.ComboBox();
-            this.textDebug = new System.Windows.Forms.TextBox();
             this.buttonAddEnfermo = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.gestionDataSet = new Afan.gestionDataSet();
@@ -194,7 +193,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
             this.exitToolStripMenuItem.Text = "E&xit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -2031,13 +2030,6 @@
             this.comboEnfermo.TabIndex = 6;
             this.comboEnfermo.SelectedIndexChanged += new System.EventHandler(this.comboEnfermo_SelectedIndexChanged);
             // 
-            // textDebug
-            // 
-            this.textDebug.Location = new System.Drawing.Point(1036, 39);
-            this.textDebug.Name = "textDebug";
-            this.textDebug.Size = new System.Drawing.Size(320, 20);
-            this.textDebug.TabIndex = 10;
-            // 
             // buttonAddEnfermo
             // 
             this.buttonAddEnfermo.Image = global::Afan.Properties.Resources.button_add_mini1;
@@ -2072,7 +2064,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1346, 752);
-            this.Controls.Add(this.textDebug);
             this.Controls.Add(this.buttonAddEnfermo);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.comboEnfermo);
@@ -2223,7 +2214,6 @@
         private System.Windows.Forms.DateTimePicker datePickEvo;
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.ComboBox comboPerfil;
-        private System.Windows.Forms.TextBox textDebug;
         private System.Windows.Forms.Label labelOCodenfermo;
         private System.Windows.Forms.TextBox textOSerial;
         private System.Windows.Forms.Label labelOSerial;

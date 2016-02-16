@@ -32,14 +32,13 @@ namespace Afan
             string sexo = comboSexo.Text;
             string fechaNaci = datePickNaci.Value.ToString("dd-MM-yyyy");
             string codcliente = getLastCode().ToString("000000");
-            int code = getLastCode();
 
             DateTime f_alta = DateTime.Today;
             string alta = f_alta.ToString("dd-MM-yyyy");
 
 
             //Preparamos la Query de inserción
-            string query = "INSERT INTO clientes(codcliente,nombrepila,apellidos,cifnif,codpago,af_fechaalta,debaja,af_sexo,personafisica,regimeniva,nombre,af_fechanacimiento,af_cuota,copiasfactura,codserie,tipoidfiscal,coddivisa) VALUES('" + codcliente + "','" + nombrepila + "','" + apellidos + "','" + cifnif + "','GIR','" + alta + "','FALSE','" + sexo + "','TRUE','General','" + nombre + "','" + fechaNaci + "',0,1,'A','NIF','EUR')";
+            string query = "INSERT INTO clientes(codcliente,nombrepila,apellidos,cifnif,codpago,af_fechaalta,debaja,af_sexo,personafisica,regimeniva,nombre,af_fechanacimiento,af_cuota,copiasfactura,codserie,tipoidfiscal,coddivisa) VALUES('" + Form1.stringToBBDD(codcliente) + "','" + Form1.stringToBBDD(nombrepila) + "','" + Form1.stringToBBDD(apellidos) + "','" + Form1.stringToBBDD(cifnif) + "','GIR','" + Form1.stringToBBDD(alta) + "','FALSE','" + Form1.stringToBBDD(sexo) + "','TRUE','General','" + Form1.stringToBBDD(nombre) + "','" + Form1.stringToBBDD(fechaNaci) + "',0,1,'A','NIF','EUR')";
 
             //Añadimos el resgitro en la BBDD
             OdbcConnection conn = this.clientesTableAdapter.Connection;
@@ -48,11 +47,11 @@ namespace Afan
             cmd.CommandText = query;
             cmd.Connection = conn;
             conn.Open();
-            cmd.ExecuteNonQuery();
+            int ok=cmd.ExecuteNonQuery();
             conn.Close();
 
             //Comprobamos que la fila ha sido insertada
-            if ((code + 1) == getLastCode())
+            if (ok==1)
             {
                 MessageBox.Show("Socio añadido correctamente");
                 padre.updateForm21(codcliente, nombre, cifnif, conn);
