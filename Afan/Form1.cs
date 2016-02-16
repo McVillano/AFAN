@@ -31,6 +31,30 @@ namespace Afan
             initDataRepeater();
         }
 
+        public static string stringToBBDD(string dato)
+        {
+            if (string.IsNullOrWhiteSpace(dato))
+            {
+                return "NULL";
+            }
+            else
+            {
+                return dato;
+            }
+        }
+
+        public static string stringToUUI(string dato)
+        {
+            if (dato == "NULL")
+            {
+                return "";
+            }
+            else
+            {
+                return dato;
+            }
+        }
+
         public void updateForm1(string id, string nombre, string nif, OdbcConnection conn)
         {
             textSocio.Text = nombre;
@@ -44,7 +68,7 @@ namespace Afan
             clearScreen();
             foreach (DataRow row in dt.Rows)
             {
-                string temp = row["codenfermo"].ToString() + " -----> " + row["nombre"].ToString() + " " + row["apellidos"].ToString()  ;
+                string temp = row["codenfermo"].ToString() + " -----> " + stringToUUI(row["nombre"].ToString()) + " " + stringToUUI(row["apellidos"].ToString())  ;
                 comboEnfermo.Items.Add(temp);
             }
             buttonAddEnfermo.Visible = true;
@@ -60,7 +84,7 @@ namespace Afan
             clearScreen();
             foreach (DataRow row in dt.Rows)
             {
-                string temp = row["codenfermo"].ToString() + " -----> " + row["nombre"].ToString() + " " + row["apellidos"].ToString();
+                string temp = row["codenfermo"].ToString() + " -----> " + stringToUUI(row["nombre"].ToString()) + " " + stringToUUI(row["apellidos"].ToString());
                 comboEnfermo.Items.Add(temp);
             }
         }
@@ -96,7 +120,7 @@ namespace Afan
             foreach (DataRow row in dt.Rows)
             {
                 //Codigo
-                textCodigo.Text = row["codigo"].ToString();
+                textCodigo.Text =stringToUUI(row["codigo"].ToString());
 
                 //Fecha Nacimiento
                 string[] token = row["f_naci"].ToString().Split(' ');
@@ -108,10 +132,10 @@ namespace Afan
                 datePickNacimiento.Value = dateNaci;
 
                 //Sexo
-                comboSexo.Text = row["sexo"].ToString();
+                comboSexo.Text = stringToUUI(row["sexo"].ToString());
 
                 //Municipio de Residencia
-                comboMResidencia.Text = row["m_resi"].ToString();
+                comboMResidencia.Text = stringToUUI(row["m_resi"].ToString());
 
                 //Fecha de Diagnostico
                 token = row["f_diag"].ToString().Split(' ');
@@ -123,10 +147,10 @@ namespace Afan
                 datePickDiag.Value = dateDiag;
 
                 //Tipo de demencia
-                comboTDemencia.Text = row["t_dem"].ToString();
+                comboTDemencia.Text = stringToUUI(row["t_dem"].ToString());
 
                 //Revisiones Periodicas
-                if (row["revisiones"].ToString() == "TRUE")
+                if (row["revisiones"].ToString() == "1")
                 {
                     checkRevisiones.Checked = true;
                 }
@@ -155,7 +179,7 @@ namespace Afan
                 {
                     checkPark.Checked = true;
                 }
-                if (!String.IsNullOrWhiteSpace(row["otrosdiag"].ToString()))
+                if (!String.IsNullOrWhiteSpace(stringToUUI(row["otrosdiag"].ToString())))
                 {
                     textOtrosDiag.Text = row["otrosdiag"].ToString();
                     checkOtrosDiag.Checked = true;
@@ -188,28 +212,28 @@ namespace Afan
                 }
 
                 //Idiomas
-                comboIdiomas.Text = row["idiomas"].ToString();
+                comboIdiomas.Text = stringToUUI(row["idiomas"].ToString());
 
                 //Nivel Educativo
-                comboNEducativo.Text = row["neduca"].ToString();
+                comboNEducativo.Text = stringToUUI(row["neduca"].ToString());
 
                 //Situación Laboral
-                comboLaboral.Text = row["slaboral"].ToString();
+                comboLaboral.Text = stringToUUI(row["slaboral"].ToString());
 
                 //Municipio Empadronamiento
-                comboMPadron.Text = row["m_empadron"].ToString();
+                comboMPadron.Text = stringToUUI(row["m_empadron"].ToString());
 
                 //Grado de Discapacidad
-                comboGDisca.Text = row["discapaci"].ToString();
+                comboGDisca.Text = stringToUUI(row["discapaci"].ToString());
 
                 //Grado de Dependencia
-                comboGDepen.Text = row["dependencia"].ToString();
+                comboGDepen.Text = stringToUUI(row["dependencia"].ToString());
 
                 //Lugar de Residencia
-                comboLResi.Text = row["residencia"].ToString();
+                comboLResi.Text = stringToUUI(row["residencia"].ToString());
 
                 //Nucleo de Convivencia
-                comboNConvivencia.Text = row["convivencia"].ToString();
+                comboNConvivencia.Text = stringToUUI(row["convivencia"].ToString());
 
                 //Numero de Personas
                 textNPer.Text = row["nper"].ToString();
@@ -224,10 +248,10 @@ namespace Afan
                 }
 
                 //Relación Cuidador
-                comboRCuidador.Text = row["relcuid"].ToString();
+                comboRCuidador.Text = stringToUUI(row["relcuid"].ToString());
 
                 //Servicios Sociales
-                comboSociales.Text = row["sociales"].ToString();
+                comboSociales.Text = stringToUUI(row["sociales"].ToString());
 
                 //Otros Servicios 
                 if (row["teleasist"].ToString() == "1")
@@ -247,26 +271,26 @@ namespace Afan
                 {
                     checkResi.Checked = true;
                 }
-                if (!String.IsNullOrWhiteSpace(row["otrosocial"].ToString()))
+                if (!String.IsNullOrWhiteSpace(stringToUUI(row["otrosocial"].ToString())))
                 {
                     textOtrosServicios.Text = row["otrosocial"].ToString();
                     checkOtrosServicios.Checked = true;
                 }
 
                 //Prestaciones Economicas
-                comboPrestEco.Text = row["presecono"].ToString();
+                comboPrestEco.Text = stringToUUI(row["presecono"].ToString());
 
                 //Vivienda Accesible
-                comboVAcess.Text = row["vivacces"].ToString();
+                comboVAcess.Text = stringToUUI(row["vivacces"].ToString());
 
                 //Receptor de Ayuda
-                comboReAyudas.Text = row["receptayu"].ToString();
+                comboReAyudas.Text = stringToUUI(row["receptayu"].ToString());
 
                 //Ayuda Tecnica
-                comboAyTec.Text = row["ayudatec"].ToString();
+                comboAyTec.Text = stringToUUI(row["ayudatec"].ToString());
 
                 //Modificación de la Capacidad Juridica
-                comboModJur.Text = row["capajuri"].ToString();
+                comboModJur.Text = stringToUUI(row["capajuri"].ToString());
 
                 //Fecha Fallecimiento
                 token = row["f_muerte"].ToString().Split(' ');
@@ -293,7 +317,7 @@ namespace Afan
             dataGridTratamientos.Columns.AddRange(new DataGridViewTextBoxColumn[] { fechaColumn, obsColumn });
             foreach (DataRow row in dt.Rows)
             {
-                dataGridTratamientos.Rows.Add(new String[] { row["fecha"].ToString(), row["observacion"].ToString() });
+                dataGridTratamientos.Rows.Add(new String[] { row["fecha"].ToString(), stringToUUI(row["observacion"].ToString()) });
             }
             conn.Close();
 
@@ -446,11 +470,11 @@ namespace Afan
             cmd.CommandType = CommandType.Text;
             if (comboTrat.Text == "Otros")
             {
-                cmd.CommandText = "INSERT INTO tratamiento(codenfermo,fecha,observacion) VALUES('"+getEnfermo()+"','" + date + "','" + textOtrosTrat.Text+"');";
+                cmd.CommandText = "INSERT INTO tratamiento(codenfermo,fecha,observacion) VALUES('"+getEnfermo()+"','" + date + "','" + stringToBBDD(textOtrosTrat.Text)+"');";
             }
             else
             {
-                cmd.CommandText = "INSERT INTO tratamiento(codenfermo,fecha,observacion) VALUES('" +getEnfermo()+ "','" + date + "','" +comboTrat.Text+"');";
+                cmd.CommandText = "INSERT INTO tratamiento(codenfermo,fecha,observacion) VALUES('" +getEnfermo()+ "','" + date + "','" + stringToBBDD(comboTrat.Text)+"');";
             }
             cmd.Connection = conn;
             conn.Open();
@@ -465,12 +489,12 @@ namespace Afan
         private void buttonSave_Click(object sender, EventArgs e)
         {
             //Preparamos los Datos para la inserción
-            string codigo = textCodigo.Text;
+            string codigo = stringToBBDD(textCodigo.Text);
             string dateNaci = datePickNacimiento.Value.ToString("dd-MM-yyyy");
-            string sexo = comboSexo.Text;
-            string muniResi = comboMResidencia.Text;
+            string sexo = stringToBBDD(comboSexo.Text);
+            string muniResi = stringToBBDD(comboMResidencia.Text);
             string dateDiag = datePickDiag.Value.ToString("dd-MM-yyyy");
-            string tipoDem = comboTDemencia.Text;
+            string tipoDem = stringToBBDD(comboTDemencia.Text);
             string revisiones="";
             if (checkRevisiones.Checked == true) { revisiones = "TRUE"; }
             else { revisiones = "FALSE"; }
@@ -492,7 +516,7 @@ namespace Afan
             else {  parkin = "FALSE"; }
             string otrosDiag = "";
             if (checkOtrosDiag.Checked == true) {  otrosDiag = textOtrosDiag.Text; }
-            else {  otrosDiag = ""; }
+            else {  otrosDiag = "NULL"; }
             string vascular = "";
             if (checkVascular.Checked == true) {  vascular = "TRUE"; }
             else {  vascular = "FALSE"; }
@@ -511,14 +535,14 @@ namespace Afan
             string down = "";
             if (checkDown.Checked == true) {  down = "TRUE"; }
             else {  down = "FALSE"; }
-            string idiomas = comboIdiomas.Text;
-            string niEduca = comboNEducativo.Text;
-            string sLaboral = comboLaboral.Text;
-            string muniEmp = comboMPadron.Text;
-            string graDis = comboGDisca.Text;
-            string graDep = comboGDepen.Text;
-            string luRes = comboLResi.Text;
-            string nuConv = comboNConvivencia.Text;
+            string idiomas = stringToBBDD(comboIdiomas.Text);
+            string niEduca = stringToBBDD(comboNEducativo.Text);
+            string sLaboral = stringToBBDD(comboLaboral.Text);
+            string muniEmp = stringToBBDD(comboMPadron.Text);
+            string graDis = stringToBBDD(comboGDisca.Text);
+            string graDep = stringToBBDD(comboGDepen.Text);
+            string luRes = stringToBBDD(comboLResi.Text);
+            string nuConv = stringToBBDD(comboNConvivencia.Text);
             int nPer=0;
             if (!string.IsNullOrWhiteSpace(textNPer.Text)){ nPer = int.Parse(textNPer.Text); }
             int nMen=0;
@@ -530,8 +554,8 @@ namespace Afan
             string cuidador = "";
             if (checkCuidador.Checked == true) {  cuidador = "TRUE";}
             else {  cuidador = "FALSE";}
-            string relCuid = comboRCuidador.Text;
-            string sociales = comboSociales.Text;
+            string relCuid = stringToBBDD(comboRCuidador.Text);
+            string sociales = stringToBBDD(comboSociales.Text);
             string tele = "";
             if (checkTele.Checked == true) {  tele = "TRUE";}
             else {  tele = "FALSE";}
@@ -546,12 +570,12 @@ namespace Afan
             else {  atResi = "FALSE";}
             string otrosServ = "";
             if (checkOtrosServicios.Checked == true) {  otrosServ = textOtrosServicios.Text;}
-            else {  otrosServ = "";}
-            string presEco = comboPrestEco.Text;
-            string vivAces = comboVAcess.Text;
-            string recepAyu = comboReAyudas.Text;
-            string ayuTec = comboAyTec.Text;
-            string capJur = comboModJur.Text;
+            else {  otrosServ = "NULL";}
+            string presEco = stringToBBDD(comboPrestEco.Text);
+            string vivAces = stringToBBDD(comboVAcess.Text);
+            string recepAyu = stringToBBDD(comboReAyudas.Text);
+            string ayuTec = stringToBBDD(comboAyTec.Text);
+            string capJur = stringToBBDD(comboModJur.Text);
             string dateFall = datePickFall.Value.ToString("dd-MM-yyyy");
 
             //Query
@@ -675,8 +699,9 @@ namespace Afan
             string[] token = fecha.Split(' ');
             string[] fechas = token[2].Split('/');
             fecha = fechas[0] + "-" + fechas[1] + "-" + fechas[2];
-            string perfil = dataRepeater1.CurrentItem.Controls["comboPerfil"].Text;
-            string observacion = dataRepeater1.CurrentItem.Controls["richEvo"].Text;
+            string perfil = stringToBBDD(dataRepeater1.CurrentItem.Controls["comboPerfil"].Text);
+            if (perfil == "NULL") { perfil = "Psicología"; }
+            string observacion = stringToBBDD(dataRepeater1.CurrentItem.Controls["richEvo"].Text);
 
             //Preparamos la query
             string query = "";
@@ -704,9 +729,8 @@ namespace Afan
 
         private void buttonAddEvol_Click(object sender, EventArgs e)
         {
-
-            dataRepeater1.CurrentItemIndex = getLasRepeater();
             upsertSelected();
+            dataRepeater1.CurrentItemIndex = getLasRepeater();
             dataRepeater1.AddNew();
         }
 

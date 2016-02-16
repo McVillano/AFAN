@@ -28,14 +28,13 @@ namespace Afan
         {
             //Preparamos los datos para la inserción
             string codenfermo = getLastCode().ToString("000000");
-            string cifnif = textcifnif.Text;
-            string nombre = textNombre.Text;
-            string apellidos = textApellidos.Text;
-            string direccion = textDireccion.Text;
-            string valdependencia = comboDependencia.Text;
-            string minusvalia = comboMinusvalía.Text;
-            string gradoMinus = textGradoMinusvalía.Text;
-            int code = getLastCode();
+            string cifnif = Form1.stringToBBDD(textcifnif.Text);
+            string nombre = Form1.stringToBBDD(textNombre.Text);
+            string apellidos = Form1.stringToBBDD(textApellidos.Text);
+            string direccion = Form1.stringToBBDD(textDireccion.Text);
+            string valdependencia = Form1.stringToBBDD(comboDependencia.Text);
+            string minusvalia = Form1.stringToBBDD(comboMinusvalía.Text);
+            string gradoMinus = Form1.stringToBBDD(textGradoMinusvalía.Text);
 
             //Preparamos la query de inserción
             string query = "INSERT INTO af_enfermos(codenfermo,cifnif,nombre,apellidos,direccion,valdependencia,minusvalia,gradominusvalia) VALUES('" + codenfermo + "','" + cifnif+"','"+nombre + "','" + apellidos + "','" + direccion + "','" + valdependencia + "','" + minusvalia + "'," + gradoMinus + ")";
@@ -54,10 +53,9 @@ namespace Afan
             if (ok1==1)
             {
                 MessageBox.Show("Enfermo añadido correctamente");
-                int code2 = getLasSerial();
 
                 //Relacionamos el Socio y el Enfermo en la tabla af_sociosenfermos
-                string query2 = "INSERT INTO af_sociosenfermos(codcliente,parentesco,codenfermo) VALUES('" + codcliente + "','" + textParentesco.Text + "','" + codenfermo + "')";
+                string query2 = "INSERT INTO af_sociosenfermos(codcliente,parentesco,codenfermo) VALUES('" + codcliente + "','" + Form1.stringToBBDD(textParentesco.Text) + "','" + codenfermo + "')";
 
                 //Añadimos el resgitro en la BBDD
                 cmd = new OdbcCommand();
@@ -98,19 +96,6 @@ namespace Afan
             string codenfermostring = row["codenfermo"].ToString();
             int codenfermo = int.Parse(codenfermostring);
             codenfermo = codenfermo + 1;
-            return codenfermo;
-        }
-
-        private int getLasSerial()
-        {
-            OdbcConnection conn = this.clientesTableAdapter.Connection;
-            string query = "SELECT idsociosenfermos FROM af_sociosenfermos ORDER BY idsociosenfermos DESC";
-            OdbcDataAdapter filtro = new OdbcDataAdapter(query, conn);
-            DataTable dt = new DataTable();
-            filtro.Fill(dt);
-            DataRow row = dt.Rows[0];
-            string codenfermostring = row["idsociosenfermos"].ToString();
-            int codenfermo = int.Parse(codenfermostring);
             return codenfermo;
         }
     }
