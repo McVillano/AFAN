@@ -34,10 +34,15 @@ namespace Afan
             string direccion = Form1.stringToBBDD(textDireccion.Text);
             string valdependencia = Form1.stringToBBDD(comboDependencia.Text);
             string minusvalia = Form1.stringToBBDD(comboMinusvalía.Text);
-            string gradoMinus = Form1.stringToBBDD(textGradoMinusvalía.Text);
+            int gradoMinus = 0;
+            if (textGradoMinusvalía.Text == "0" || string.IsNullOrWhiteSpace(textGradoMinusvalía.Text) || textGradoMinusvalía.Text == "-") { }
+            else
+            {
+                gradoMinus = int.Parse(textGradoMinusvalía.Text);
+            }
 
             //Preparamos la query de inserción
-            string query = "INSERT INTO af_enfermos(codenfermo,cifnif,nombre,apellidos,direccion,valdependencia,minusvalia,gradominusvalia) VALUES('" + codenfermo + "','" + cifnif+"','"+nombre + "','" + apellidos + "','" + direccion + "','" + valdependencia + "','" + minusvalia + "'," + gradoMinus + ")";
+            string query = "INSERT INTO af_enfermos(codenfermo,cifnif,nombre,apellidos,direccion,valdependencia,minusvalia,gradominusvalia) VALUES('" + codenfermo + "','" + cifnif+"','"+nombre + "','" + apellidos + "','" + direccion + "','" + valdependencia + "','" + minusvalia + "'," + gradoMinus.ToString() + ")";
 
             //Añadimos el resgitro en la BBDD
             OdbcConnection conn = this.clientesTableAdapter.Connection;

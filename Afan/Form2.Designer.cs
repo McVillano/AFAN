@@ -144,7 +144,7 @@
             this.clientesDataGridView.Location = new System.Drawing.Point(12, 12);
             this.clientesDataGridView.Name = "clientesDataGridView";
             this.clientesDataGridView.ReadOnly = true;
-            this.clientesDataGridView.Size = new System.Drawing.Size(587, 549);
+            this.clientesDataGridView.Size = new System.Drawing.Size(587, 558);
             this.clientesDataGridView.TabIndex = 10;
             this.clientesDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.clientesDataGridView_CellContentClick_1);
             // 
@@ -176,7 +176,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackgroundImage = global::Afan.Properties.Resources.Fondo_1;
-            this.ClientSize = new System.Drawing.Size(902, 573);
+            this.ClientSize = new System.Drawing.Size(910, 582);
             this.Controls.Add(this.clientesDataGridView);
             this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.labelTipo);
@@ -186,9 +186,9 @@
             this.Controls.Add(this.txtFiltro);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(910, 600);
+            this.MaximumSize = new System.Drawing.Size(926, 620);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(910, 600);
+            this.MinimumSize = new System.Drawing.Size(926, 620);
             this.Name = "Form2";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

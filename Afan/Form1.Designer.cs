@@ -143,10 +143,10 @@
             this.datePickEvo = new System.Windows.Forms.DateTimePicker();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.buttonExportar = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button3 = new System.Windows.Forms.Button();
+            this.dataGridInformes = new System.Windows.Forms.DataGridView();
+            this.buttonUpload = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.treeSlider = new System.Windows.Forms.TreeView();
             this.textSocio = new System.Windows.Forms.TextBox();
@@ -157,6 +157,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.gestionDataSet = new Afan.gestionDataSet();
             this.clientesTableAdapter = new Afan.gestionDataSetTableAdapters.clientesTableAdapter();
+            this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
             this.menuStrip1.SuspendLayout();
             this.tabControlMain.SuspendLayout();
             this.tabPageSocial.SuspendLayout();
@@ -167,8 +168,9 @@
             this.dataRepeater1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridInformes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gestionDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -1920,8 +1922,8 @@
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.groupBox2);
-            this.tabPage1.Controls.Add(this.dataGridView1);
-            this.tabPage1.Controls.Add(this.button3);
+            this.tabPage1.Controls.Add(this.dataGridInformes);
+            this.tabPage1.Controls.Add(this.buttonUpload);
             this.tabPage1.Controls.Add(this.button4);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
@@ -1933,7 +1935,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.button2);
+            this.groupBox2.Controls.Add(this.buttonExportar);
             this.groupBox2.Controls.Add(this.richTextBox1);
             this.groupBox2.Location = new System.Drawing.Point(522, 3);
             this.groupBox2.Name = "groupBox2";
@@ -1942,14 +1944,15 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Imprimir Informe";
             // 
-            // button2
+            // buttonExportar
             // 
-            this.button2.Location = new System.Drawing.Point(6, 610);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(618, 28);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Exportar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.buttonExportar.Location = new System.Drawing.Point(6, 610);
+            this.buttonExportar.Name = "buttonExportar";
+            this.buttonExportar.Size = new System.Drawing.Size(618, 28);
+            this.buttonExportar.TabIndex = 1;
+            this.buttonExportar.Text = "Exportar";
+            this.buttonExportar.UseVisualStyleBackColor = true;
+            this.buttonExportar.Click += new System.EventHandler(this.buttonExportar_Click);
             // 
             // richTextBox1
             // 
@@ -1959,22 +1962,27 @@
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
             // 
-            // dataGridView1
+            // dataGridInformes
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 35);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(510, 612);
-            this.dataGridView1.TabIndex = 1;
+            this.dataGridInformes.AllowUserToAddRows = false;
+            this.dataGridInformes.AllowUserToDeleteRows = false;
+            this.dataGridInformes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridInformes.Location = new System.Drawing.Point(6, 35);
+            this.dataGridInformes.Name = "dataGridInformes";
+            this.dataGridInformes.ReadOnly = true;
+            this.dataGridInformes.Size = new System.Drawing.Size(510, 612);
+            this.dataGridInformes.TabIndex = 1;
+            this.dataGridInformes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridInformes_CellContentClick);
             // 
-            // button3
+            // buttonUpload
             // 
-            this.button3.Location = new System.Drawing.Point(6, 6);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(252, 23);
-            this.button3.TabIndex = 0;
-            this.button3.Text = "Cargar Archivo";
-            this.button3.UseVisualStyleBackColor = true;
+            this.buttonUpload.Location = new System.Drawing.Point(6, 6);
+            this.buttonUpload.Name = "buttonUpload";
+            this.buttonUpload.Size = new System.Drawing.Size(252, 23);
+            this.buttonUpload.TabIndex = 0;
+            this.buttonUpload.Text = "Cargar Archivo";
+            this.buttonUpload.UseVisualStyleBackColor = true;
+            this.buttonUpload.Click += new System.EventHandler(this.buttonUpload_Click);
             // 
             // button4
             // 
@@ -2059,6 +2067,11 @@
             // 
             this.clientesTableAdapter.ClearBeforeFill = true;
             // 
+            // fileSystemWatcher1
+            // 
+            this.fileSystemWatcher1.EnableRaisingEvents = true;
+            this.fileSystemWatcher1.SynchronizingObject = this;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2077,7 +2090,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = ".";
+            this.Text = "AFAN";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.tabControlMain.ResumeLayout(false);
@@ -2092,8 +2105,9 @@
             this.dataRepeater1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridInformes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gestionDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2223,12 +2237,13 @@
         private Afan.gestionDataSet gestionDataSet;
         private Afan.gestionDataSetTableAdapters.clientesTableAdapter clientesTableAdapter;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button buttonUpload;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buttonExportar;
         private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridInformes;
+        private System.IO.FileSystemWatcher fileSystemWatcher1;
     }
 }
 

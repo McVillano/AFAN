@@ -1,13 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Data;
+using System.IO;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.Odbc;
+using PdfSharp;
+using PdfSharp.Drawing;
+using PdfSharp.Pdf;
+using PdfSharp.Pdf.IO;
 
 namespace Afan
 {
@@ -66,6 +72,7 @@ namespace Afan
             comboEnfermo.Items.Clear();
             comboEnfermo.Text = "";
             clearScreen();
+            loadInformes();
             foreach (DataRow row in dt.Rows)
             {
                 string temp = row["codenfermo"].ToString() + " -----> " + stringToUUI(row["nombre"].ToString()) + " " + stringToUUI(row["apellidos"].ToString())  ;
@@ -82,6 +89,7 @@ namespace Afan
             comboEnfermo.Items.Clear();
             comboEnfermo.Text = "";
             clearScreen();
+            loadInformes();
             foreach (DataRow row in dt.Rows)
             {
                 string temp = row["codenfermo"].ToString() + " -----> " + stringToUUI(row["nombre"].ToString()) + " " + stringToUUI(row["apellidos"].ToString());
@@ -108,6 +116,7 @@ namespace Afan
             clearScreen();
             loadEnfermo(getEnfermo());
             loadDataRepeater();
+            loadInformes();
         }
 
         private void loadEnfermo(string idenfermo)
@@ -751,6 +760,78 @@ namespace Afan
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void buttonExportar_Click(object sender, EventArgs e)
+        {
+            PdfDocument pdf = new PdfDocument();
+
+            DateTime local = DateTime.Now;
+
+            string title = "Informe_" + getEnfermo() + "_" + local.ToString("ddMMyy")+".pdf";
+            pdf.Info.Title = title;
+
+            PdfPage pagina = pdf.AddPage();
+            XGraphics gfx = XGraphics.FromPdfPage(pagina);
+            XFont font = new XFont("Verdana", 12, XFontStyle.Regular);
+            gfx.DrawString(richTextBox1.Text, font, XBrushes.Black,
+                new XRect(0, 0, pagina.Width, pagina.Height),
+                XStringFormats.Center);
+
+            string filepath = "C:/Users/usuario/Desktop/"+title;
+            pdf.Save(filepath);
+            Process.Start(filepath);
+        }
+
+        private void buttonUpload_Click(object sender, EventArgs e)
+        {
+            string path = "X:/Informes/" + getEnfermo()+"/";
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+            OpenFileDialog save = new OpenFileDialog();
+            save.Filter = "Archivo PDF|*.pdf|Todos los Archivos|*.*";
+            save.Title = "Guardar Informe";
+            save.ShowDialog();
+            string[] aux = save.FileName.Split('\\');
+            string file = aux[aux.Length - 1];
+            if (!string.IsNullOrWhiteSpace(save.FileName))
+            {
+                File.Copy(save.FileName, path + file);
+                loadInformes();
+            }
+        }
+
+        private void loadInformes()
+        {
+            string path = "X:/Informes/" + getEnfermo() + "/";
+            if (Directory.Exists(path))
+            {
+                DataGridViewTextBoxColumn nombreColumn = new DataGridViewTextBoxColumn();
+                nombreColumn.HeaderText = "Nombre";
+                nombreColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dataGridInformes.Columns.Clear();
+                dataGridInformes.Columns.AddRange(new DataGridViewTextBoxColumn[] { nombreColumn });
+                DirectoryInfo dir = new DirectoryInfo(path);
+
+                foreach (FileInfo file in dir.GetFiles())
+                {
+                    dataGridInformes.Rows.Add(new String[] {file.Name});
+                }
+            }
+            else
+            {
+                dataGridInformes.Columns.Clear();
+            }
+        }
+
+        private void dataGridInformes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int selectedRowIndex = dataGridInformes.SelectedCells[0].RowIndex;
+            string file = dataGridInformes.Rows[selectedRowIndex].Cells[0].Value.ToString();
+            string path = "X:/Informes/" + getEnfermo() + "/" + file;
+            Process.Start(path);
         }
     }
 }
