@@ -20,6 +20,7 @@ namespace Afan
             this.padre = padre;
             buttonAdd.Visible = false;
             comboFiltro.Text = "cifnif";
+            clientesDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -56,7 +57,7 @@ namespace Afan
 
         }
 
-        private void clientesDataGridView_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        private void clientesDataGridView_CellContentDoubleClick_1(object sender, DataGridViewCellEventArgs e)
         {
             int selectedRowIndex = this.clientesDataGridView.SelectedCells[0].RowIndex;
             string id = this.clientesDataGridView.Rows[selectedRowIndex].Cells[0].Value.ToString();

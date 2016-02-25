@@ -14,6 +14,7 @@ using PdfSharp;
 using PdfSharp.Drawing;
 using PdfSharp.Pdf;
 using PdfSharp.Pdf.IO;
+using PdfSharp.Drawing.Layout;
 
 namespace Afan
 {
@@ -35,6 +36,8 @@ namespace Afan
             textOCodenfermo.Visible = false;
             textOSerial.Visible = false;
             initDataRepeater();
+            richTextBox1.Font = new Font("Lucida Sans Typewrite", 8, FontStyle.Regular);
+            tabControlMain.Appearance = TabAppearance.FlatButtons;
         }
 
         public static string stringToBBDD(string dato)
@@ -762,6 +765,17 @@ namespace Afan
             Application.Exit();
         }
 
+        private void addLogo(XGraphics gfx, string imagePath, int xPosition, int yPosition,int width, int height)
+        {
+            if (!File.Exists(imagePath))
+            {
+                throw new FileNotFoundException(String.Format("Could not find image {0}.", imagePath));
+            }
+
+            XImage xImage = XImage.FromFile(imagePath);
+            gfx.DrawImage(xImage, xPosition, yPosition, width, height);
+        }
+
         private void buttonExportar_Click(object sender, EventArgs e)
         {
             PdfDocument pdf = new PdfDocument();
@@ -773,14 +787,67 @@ namespace Afan
 
             PdfPage pagina = pdf.AddPage();
             XGraphics gfx = XGraphics.FromPdfPage(pagina);
-            XFont font = new XFont("Verdana", 12, XFontStyle.Regular);
-            gfx.DrawString(richTextBox1.Text, font, XBrushes.Black,
-                new XRect(0, 0, pagina.Width, pagina.Height),
-                XStringFormats.Center);
+            XTextFormatter tf = new XTextFormatter(gfx);
 
-            string filepath = "C:/Users/usuario/Desktop/"+title;
-            pdf.Save(filepath);
-            Process.Start(filepath);
+            XFont font = new XFont("Verdana", 10, XFontStyle.Regular);
+            XFont fontFecha = new XFont("Verdana", 10, XFontStyle.Regular);
+            XFont headerFont = new XFont("Verdana",8,XFontStyle.Regular);
+            XFont cifFont = new XFont("Verdana", 7, XFontStyle.Regular);
+
+            tf.DrawString("Estimado/a compañero/a:", font, XBrushes.Black,
+                new XRect(45, 200, pagina.Width, pagina.Height),
+                XStringFormats.TopLeft);
+
+            tf.DrawString(richTextBox1.Text, font, XBrushes.Black,
+                new XRect(45, 220, pagina.Width, pagina.Height),
+                XStringFormats.TopLeft);
+
+            string header1 = "         Pintor Maeztu,2 bajo - 31008 Pamplona\n"+
+                             "          Telf.: 948 275 252 - Fax: 948 260 304\n"+
+                     "             E-mail: afan@alzheimernavarra.com\n" +
+                            "                                    \n " +
+                    "Avda.Zaragoza,1 Enpta.Izda. - 31500 Tudela\n" +
+                    "                                         Telf.: 948410299\n" +
+                     "          E-mail: tudela@alzheimernavarra.com\n";
+            tf.DrawString(header1, headerFont, XBrushes.MediumPurple,
+                new XRect(390, 25, 190, 0),
+                XStringFormats.TopLeft);
+
+            addLogo(gfx, "X:/Afan.png", 25, 15,201,134);
+
+            string cif = "C.I.F. G-31286784";
+            tf.DrawString(cif, cifFont, XBrushes.MediumPurple,
+                new XRect((pagina.Width/2)-20, pagina.Height-10, 190, 0),
+                XStringFormats.TopLeft);
+
+            string dia = datePickInforme.Value.ToString("dd");
+            string mes = datePickInforme.Value.ToString("MMMM");
+            string año = datePickInforme.Value.ToString("yyyy");
+            string fecha = "Pamplona, a " + dia + " de " + mes + " de " + año;
+            tf.DrawString(fecha, fontFecha, XBrushes.Black,
+                new XRect(400, 170, 190, 0),
+                XStringFormats.TopLeft);
+
+            string constanscia = "Y firmo para que conste";
+            tf.DrawString(constanscia, fontFecha, XBrushes.Black,
+                new XRect(310, pagina.Height - 110, 150, 0),
+                XStringFormats.TopLeft);
+
+            string colegiado = "          Idoia Lorrea\n Psicóloga Sanitaria\n            Nº Col 819";
+            tf.DrawString(colegiado, fontFecha, XBrushes.Black,
+                new XRect(430, pagina.Height - 80, 150, 0),
+                XStringFormats.TopLeft);
+
+            SaveFileDialog save = new SaveFileDialog();
+            save.Filter = "Todos los Archivos|*.*";
+            save.Title = "Guardar Como...";
+            save.FileName = title;
+            save.ShowDialog();
+            if (!string.IsNullOrWhiteSpace(save.FileName))
+            {
+                pdf.Save(save.FileName);
+            }
+            Process.Start(save.FileName);
         }
 
         private void buttonUpload_Click(object sender, EventArgs e)
@@ -792,7 +859,7 @@ namespace Afan
             }
             OpenFileDialog save = new OpenFileDialog();
             save.Filter = "Archivo PDF|*.pdf|Todos los Archivos|*.*";
-            save.Title = "Guardar Informe";
+            save.Title = "Importar Informe";
             save.ShowDialog();
             string[] aux = save.FileName.Split('\\');
             string file = aux[aux.Length - 1];
@@ -826,12 +893,45 @@ namespace Afan
             }
         }
 
-        private void dataGridInformes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridInformes_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             int selectedRowIndex = dataGridInformes.SelectedCells[0].RowIndex;
             string file = dataGridInformes.Rows[selectedRowIndex].Cells[0].Value.ToString();
             string path = "X:/Informes/" + getEnfermo() + "/" + file;
             Process.Start(path);
+        }
+
+        private void buttonSaveDocument_Click(object sender, EventArgs e)
+        {
+            int selectedRowIndex = dataGridInformes.SelectedCells[0].RowIndex;
+            string file = dataGridInformes.Rows[selectedRowIndex].Cells[0].Value.ToString();
+            string origPath = "X:/Informes/" + getEnfermo() + "/" + file;
+
+            SaveFileDialog save = new SaveFileDialog();
+            save.Filter = "Todos los Archivos|*.*";
+            save.Title = "Guardar Como...";
+            save.FileName = file;
+            save.ShowDialog();
+            if (!string.IsNullOrWhiteSpace(save.FileName))
+            {
+                File.Copy(origPath, save.FileName);
+            }
+        }
+
+        private void buttonPagina_Click(object sender, EventArgs e)
+        {
+            richTextBox1.AppendText("\r\n<PAGINA>\r\n");
+        }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+            int line = richTextBox1.GetLineFromCharIndex(richTextBox1.SelectionStart);
+            int column = richTextBox1.SelectionStart - richTextBox1.GetFirstCharIndexFromLine(line);
+            textDebug.Text = line.ToString() + "----" + column.ToString();
+            if (column >= 92)
+            {
+                richTextBox1.AppendText(Environment.NewLine);
+            }
         }
     }
 }

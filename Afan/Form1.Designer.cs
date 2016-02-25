@@ -143,11 +143,13 @@
             this.datePickEvo = new System.Windows.Forms.DateTimePicker();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label36 = new System.Windows.Forms.Label();
+            this.datePickInforme = new System.Windows.Forms.DateTimePicker();
             this.buttonExportar = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.dataGridInformes = new System.Windows.Forms.DataGridView();
             this.buttonUpload = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.buttonSaveDocument = new System.Windows.Forms.Button();
             this.treeSlider = new System.Windows.Forms.TreeView();
             this.textSocio = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -158,6 +160,8 @@
             this.gestionDataSet = new Afan.gestionDataSet();
             this.clientesTableAdapter = new Afan.gestionDataSetTableAdapters.clientesTableAdapter();
             this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
+            this.buttonPagina = new System.Windows.Forms.Button();
+            this.textDebug = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.tabControlMain.SuspendLayout();
             this.tabPageSocial.SuspendLayout();
@@ -180,7 +184,7 @@
             this.ayudaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1346, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1369, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -221,12 +225,13 @@
             this.tabControlMain.Location = new System.Drawing.Point(183, 71);
             this.tabControlMain.Name = "tabControlMain";
             this.tabControlMain.SelectedIndex = 0;
-            this.tabControlMain.Size = new System.Drawing.Size(1163, 679);
+            this.tabControlMain.Size = new System.Drawing.Size(1194, 703);
             this.tabControlMain.TabIndex = 2;
             // 
             // tabPageSocial
             // 
             this.tabPageSocial.AutoScroll = true;
+            this.tabPageSocial.BackColor = System.Drawing.Color.White;
             this.tabPageSocial.Controls.Add(this.buttonSave);
             this.tabPageSocial.Controls.Add(this.btnAddTrat);
             this.tabPageSocial.Controls.Add(this.textOtrosTrat);
@@ -312,18 +317,18 @@
             this.tabPageSocial.Controls.Add(this.label13);
             this.tabPageSocial.Controls.Add(this.label4);
             this.tabPageSocial.Controls.Add(this.label3);
+            this.tabPageSocial.ForeColor = System.Drawing.SystemColors.ControlText;
             this.tabPageSocial.Location = new System.Drawing.Point(4, 22);
             this.tabPageSocial.Name = "tabPageSocial";
             this.tabPageSocial.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageSocial.Size = new System.Drawing.Size(1155, 653);
+            this.tabPageSocial.Size = new System.Drawing.Size(1186, 677);
             this.tabPageSocial.TabIndex = 0;
             this.tabPageSocial.Text = "Trabajo Social";
-            this.tabPageSocial.UseVisualStyleBackColor = true;
             // 
             // buttonSave
             // 
             this.buttonSave.Image = global::Afan.Properties.Resources.save;
-            this.buttonSave.Location = new System.Drawing.Point(6, 557);
+            this.buttonSave.Location = new System.Drawing.Point(6, 588);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(158, 84);
             this.buttonSave.TabIndex = 70;
@@ -333,7 +338,7 @@
             // btnAddTrat
             // 
             this.btnAddTrat.Image = global::Afan.Properties.Resources.button_add_5121;
-            this.btnAddTrat.Location = new System.Drawing.Point(609, 581);
+            this.btnAddTrat.Location = new System.Drawing.Point(609, 609);
             this.btnAddTrat.Name = "btnAddTrat";
             this.btnAddTrat.Size = new System.Drawing.Size(68, 60);
             this.btnAddTrat.TabIndex = 69;
@@ -424,7 +429,7 @@
             this.dataGridTratamientos.Location = new System.Drawing.Point(683, 393);
             this.dataGridTratamientos.Name = "dataGridTratamientos";
             this.dataGridTratamientos.ReadOnly = true;
-            this.dataGridTratamientos.Size = new System.Drawing.Size(466, 248);
+            this.dataGridTratamientos.Size = new System.Drawing.Size(489, 279);
             this.dataGridTratamientos.TabIndex = 62;
             // 
             // Fecha
@@ -444,7 +449,7 @@
             // 
             this.textOtrosServicios.Location = new System.Drawing.Point(949, 183);
             this.textOtrosServicios.Name = "textOtrosServicios";
-            this.textOtrosServicios.Size = new System.Drawing.Size(200, 20);
+            this.textOtrosServicios.Size = new System.Drawing.Size(221, 20);
             this.textOtrosServicios.TabIndex = 61;
             // 
             // textOtrosDiag
@@ -594,7 +599,7 @@
             // 
             this.datePickFall.Location = new System.Drawing.Point(949, 366);
             this.datePickFall.Name = "datePickFall";
-            this.datePickFall.Size = new System.Drawing.Size(200, 20);
+            this.datePickFall.Size = new System.Drawing.Size(221, 20);
             this.datePickFall.TabIndex = 52;
             // 
             // label34
@@ -616,7 +621,7 @@
             "No sabe/No Contesta"});
             this.comboModJur.Location = new System.Drawing.Point(968, 333);
             this.comboModJur.Name = "comboModJur";
-            this.comboModJur.Size = new System.Drawing.Size(181, 21);
+            this.comboModJur.Size = new System.Drawing.Size(202, 21);
             this.comboModJur.TabIndex = 50;
             // 
             // comboAyTec
@@ -629,7 +634,7 @@
             "No sabe/No contesta"});
             this.comboAyTec.Location = new System.Drawing.Point(949, 303);
             this.comboAyTec.Name = "comboAyTec";
-            this.comboAyTec.Size = new System.Drawing.Size(200, 21);
+            this.comboAyTec.Size = new System.Drawing.Size(221, 21);
             this.comboAyTec.TabIndex = 49;
             // 
             // label33
@@ -659,7 +664,7 @@
             "No sabe/No contesta"});
             this.comboReAyudas.Location = new System.Drawing.Point(949, 273);
             this.comboReAyudas.Name = "comboReAyudas";
-            this.comboReAyudas.Size = new System.Drawing.Size(200, 21);
+            this.comboReAyudas.Size = new System.Drawing.Size(221, 21);
             this.comboReAyudas.TabIndex = 47;
             // 
             // label31
@@ -681,7 +686,7 @@
             "No sabe/No contesta"});
             this.comboVAcess.Location = new System.Drawing.Point(949, 243);
             this.comboVAcess.Name = "comboVAcess";
-            this.comboVAcess.Size = new System.Drawing.Size(200, 21);
+            this.comboVAcess.Size = new System.Drawing.Size(221, 21);
             this.comboVAcess.TabIndex = 45;
             // 
             // label30
@@ -1039,7 +1044,7 @@
             "No sabe/No contesta"});
             this.comboPrestEco.Location = new System.Drawing.Point(949, 213);
             this.comboPrestEco.Name = "comboPrestEco";
-            this.comboPrestEco.Size = new System.Drawing.Size(200, 21);
+            this.comboPrestEco.Size = new System.Drawing.Size(221, 21);
             this.comboPrestEco.TabIndex = 21;
             // 
             // comboSociales
@@ -1052,7 +1057,7 @@
             "Servicios de prevención de dependencia"});
             this.comboSociales.Location = new System.Drawing.Point(949, 32);
             this.comboSociales.Name = "comboSociales";
-            this.comboSociales.Size = new System.Drawing.Size(200, 21);
+            this.comboSociales.Size = new System.Drawing.Size(221, 21);
             this.comboSociales.TabIndex = 21;
             // 
             // comboIdiomas
@@ -1798,16 +1803,16 @@
             // 
             // tabPageEvolu
             // 
+            this.tabPageEvolu.BackColor = System.Drawing.Color.White;
             this.tabPageEvolu.Controls.Add(this.buttonSaveEvol);
             this.tabPageEvolu.Controls.Add(this.buttonAddEvol);
             this.tabPageEvolu.Controls.Add(this.dataRepeater1);
             this.tabPageEvolu.Location = new System.Drawing.Point(4, 22);
             this.tabPageEvolu.Name = "tabPageEvolu";
             this.tabPageEvolu.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageEvolu.Size = new System.Drawing.Size(1155, 653);
+            this.tabPageEvolu.Size = new System.Drawing.Size(1186, 677);
             this.tabPageEvolu.TabIndex = 1;
             this.tabPageEvolu.Text = "Evolutivos";
-            this.tabPageEvolu.UseVisualStyleBackColor = true;
             // 
             // buttonSaveEvol
             // 
@@ -1821,12 +1826,13 @@
             // 
             // buttonAddEvol
             // 
+            this.buttonAddEvol.BackColor = System.Drawing.Color.White;
             this.buttonAddEvol.Image = global::Afan.Properties.Resources.button_add_mini1;
             this.buttonAddEvol.Location = new System.Drawing.Point(6, 3);
             this.buttonAddEvol.Name = "buttonAddEvol";
             this.buttonAddEvol.Size = new System.Drawing.Size(527, 23);
             this.buttonAddEvol.TabIndex = 17;
-            this.buttonAddEvol.UseVisualStyleBackColor = true;
+            this.buttonAddEvol.UseVisualStyleBackColor = false;
             this.buttonAddEvol.Click += new System.EventHandler(this.buttonAddEvol_Click);
             // 
             // dataRepeater1
@@ -1834,6 +1840,7 @@
             this.dataRepeater1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataRepeater1.BackColor = System.Drawing.Color.White;
             // 
             // dataRepeater1.ItemTemplate
             // 
@@ -1845,10 +1852,10 @@
             this.dataRepeater1.ItemTemplate.Controls.Add(this.comboPerfil);
             this.dataRepeater1.ItemTemplate.Controls.Add(this.richEvo);
             this.dataRepeater1.ItemTemplate.Controls.Add(this.datePickEvo);
-            this.dataRepeater1.ItemTemplate.Size = new System.Drawing.Size(1147, 112);
+            this.dataRepeater1.ItemTemplate.Size = new System.Drawing.Size(1170, 208);
             this.dataRepeater1.Location = new System.Drawing.Point(0, 31);
             this.dataRepeater1.Name = "dataRepeater1";
-            this.dataRepeater1.Size = new System.Drawing.Size(1155, 619);
+            this.dataRepeater1.Size = new System.Drawing.Size(1178, 641);
             this.dataRepeater1.TabIndex = 0;
             this.dataRepeater1.Text = "dataRepeater1";
             // 
@@ -1908,7 +1915,7 @@
             // 
             this.richEvo.Location = new System.Drawing.Point(3, 29);
             this.richEvo.Name = "richEvo";
-            this.richEvo.Size = new System.Drawing.Size(1129, 79);
+            this.richEvo.Size = new System.Drawing.Size(1148, 175);
             this.richEvo.TabIndex = 11;
             this.richEvo.Text = "";
             // 
@@ -1921,34 +1928,54 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.BackColor = System.Drawing.Color.White;
             this.tabPage1.Controls.Add(this.groupBox2);
             this.tabPage1.Controls.Add(this.dataGridInformes);
             this.tabPage1.Controls.Add(this.buttonUpload);
-            this.tabPage1.Controls.Add(this.button4);
+            this.tabPage1.Controls.Add(this.buttonSaveDocument);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1155, 653);
+            this.tabPage1.Size = new System.Drawing.Size(1186, 677);
             this.tabPage1.TabIndex = 2;
             this.tabPage1.Text = "Documentación";
-            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.buttonPagina);
+            this.groupBox2.Controls.Add(this.label36);
+            this.groupBox2.Controls.Add(this.datePickInforme);
             this.groupBox2.Controls.Add(this.buttonExportar);
             this.groupBox2.Controls.Add(this.richTextBox1);
             this.groupBox2.Location = new System.Drawing.Point(522, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(630, 644);
+            this.groupBox2.Size = new System.Drawing.Size(648, 666);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Imprimir Informe";
             // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label36.Location = new System.Drawing.Point(88, 13);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(129, 17);
+            this.label36.TabIndex = 3;
+            this.label36.Text = "Fecha del Informe: ";
+            // 
+            // datePickInforme
+            // 
+            this.datePickInforme.Location = new System.Drawing.Point(223, 13);
+            this.datePickInforme.Name = "datePickInforme";
+            this.datePickInforme.Size = new System.Drawing.Size(419, 20);
+            this.datePickInforme.TabIndex = 2;
+            // 
             // buttonExportar
             // 
-            this.buttonExportar.Location = new System.Drawing.Point(6, 610);
+            this.buttonExportar.Location = new System.Drawing.Point(6, 633);
             this.buttonExportar.Name = "buttonExportar";
-            this.buttonExportar.Size = new System.Drawing.Size(618, 28);
+            this.buttonExportar.Size = new System.Drawing.Size(463, 28);
             this.buttonExportar.TabIndex = 1;
             this.buttonExportar.Text = "Exportar";
             this.buttonExportar.UseVisualStyleBackColor = true;
@@ -1956,23 +1983,24 @@
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(6, 19);
+            this.richTextBox1.Location = new System.Drawing.Point(6, 39);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(618, 585);
+            this.richTextBox1.Size = new System.Drawing.Size(636, 588);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
+            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
             // dataGridInformes
             // 
             this.dataGridInformes.AllowUserToAddRows = false;
             this.dataGridInformes.AllowUserToDeleteRows = false;
             this.dataGridInformes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridInformes.Location = new System.Drawing.Point(6, 35);
+            this.dataGridInformes.Location = new System.Drawing.Point(10, 35);
             this.dataGridInformes.Name = "dataGridInformes";
             this.dataGridInformes.ReadOnly = true;
-            this.dataGridInformes.Size = new System.Drawing.Size(510, 612);
+            this.dataGridInformes.Size = new System.Drawing.Size(510, 634);
             this.dataGridInformes.TabIndex = 1;
-            this.dataGridInformes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridInformes_CellContentClick);
+            this.dataGridInformes.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridInformes_CellContentDoubleClick);
             // 
             // buttonUpload
             // 
@@ -1984,14 +2012,15 @@
             this.buttonUpload.UseVisualStyleBackColor = true;
             this.buttonUpload.Click += new System.EventHandler(this.buttonUpload_Click);
             // 
-            // button4
+            // buttonSaveDocument
             // 
-            this.button4.Location = new System.Drawing.Point(264, 6);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(252, 23);
-            this.button4.TabIndex = 0;
-            this.button4.Text = "Exportar Archivo";
-            this.button4.UseVisualStyleBackColor = true;
+            this.buttonSaveDocument.Location = new System.Drawing.Point(264, 6);
+            this.buttonSaveDocument.Name = "buttonSaveDocument";
+            this.buttonSaveDocument.Size = new System.Drawing.Size(252, 23);
+            this.buttonSaveDocument.TabIndex = 0;
+            this.buttonSaveDocument.Text = "Exportar Archivo";
+            this.buttonSaveDocument.UseVisualStyleBackColor = true;
+            this.buttonSaveDocument.Click += new System.EventHandler(this.buttonSaveDocument_Click);
             // 
             // treeSlider
             // 
@@ -2043,7 +2072,7 @@
             this.buttonAddEnfermo.Image = global::Afan.Properties.Resources.button_add_mini1;
             this.buttonAddEnfermo.Location = new System.Drawing.Point(964, 31);
             this.buttonAddEnfermo.Name = "buttonAddEnfermo";
-            this.buttonAddEnfermo.Size = new System.Drawing.Size(39, 34);
+            this.buttonAddEnfermo.Size = new System.Drawing.Size(35, 34);
             this.buttonAddEnfermo.TabIndex = 9;
             this.buttonAddEnfermo.UseVisualStyleBackColor = true;
             this.buttonAddEnfermo.Click += new System.EventHandler(this.buttonAddEnfermo_Click);
@@ -2072,11 +2101,30 @@
             this.fileSystemWatcher1.EnableRaisingEvents = true;
             this.fileSystemWatcher1.SynchronizingObject = this;
             // 
+            // buttonPagina
+            // 
+            this.buttonPagina.Location = new System.Drawing.Point(475, 633);
+            this.buttonPagina.Name = "buttonPagina";
+            this.buttonPagina.Size = new System.Drawing.Size(167, 28);
+            this.buttonPagina.TabIndex = 4;
+            this.buttonPagina.Text = "Pagina";
+            this.buttonPagina.UseVisualStyleBackColor = true;
+            this.buttonPagina.Click += new System.EventHandler(this.buttonPagina_Click);
+            // 
+            // textDebug
+            // 
+            this.textDebug.Location = new System.Drawing.Point(1078, 43);
+            this.textDebug.Name = "textDebug";
+            this.textDebug.Size = new System.Drawing.Size(100, 20);
+            this.textDebug.TabIndex = 10;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1346, 752);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(1369, 769);
+            this.Controls.Add(this.textDebug);
             this.Controls.Add(this.buttonAddEnfermo);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.comboEnfermo);
@@ -2105,6 +2153,7 @@
             this.dataRepeater1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridInformes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gestionDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
@@ -2238,12 +2287,16 @@
         private Afan.gestionDataSetTableAdapters.clientesTableAdapter clientesTableAdapter;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Button buttonUpload;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button buttonSaveDocument;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button buttonExportar;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.DataGridView dataGridInformes;
         private System.IO.FileSystemWatcher fileSystemWatcher1;
+        private System.Windows.Forms.DateTimePicker datePickInforme;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.Button buttonPagina;
+        private System.Windows.Forms.TextBox textDebug;
     }
 }
 

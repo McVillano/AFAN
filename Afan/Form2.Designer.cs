@@ -69,12 +69,13 @@
             // 
             // btnBuscar
             // 
+            this.btnBuscar.BackColor = System.Drawing.Color.White;
             this.btnBuscar.Location = new System.Drawing.Point(822, 94);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(75, 23);
             this.btnBuscar.TabIndex = 3;
             this.btnBuscar.Text = "Buscar";
-            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.UseVisualStyleBackColor = false;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // comboFiltro
@@ -102,12 +103,13 @@
             // 
             // buttonAdd
             // 
+            this.buttonAdd.BackColor = System.Drawing.Color.White;
             this.buttonAdd.Image = global::Afan.Properties.Resources.button_add_5121;
             this.buttonAdd.Location = new System.Drawing.Point(822, 123);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(75, 70);
             this.buttonAdd.TabIndex = 9;
-            this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.UseVisualStyleBackColor = false;
             this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
             // gestionDataSet
@@ -146,7 +148,7 @@
             this.clientesDataGridView.ReadOnly = true;
             this.clientesDataGridView.Size = new System.Drawing.Size(587, 558);
             this.clientesDataGridView.TabIndex = 10;
-            this.clientesDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.clientesDataGridView_CellContentClick_1);
+            this.clientesDataGridView.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.clientesDataGridView_CellContentDoubleClick_1);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -176,7 +178,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackgroundImage = global::Afan.Properties.Resources.Fondo_1;
-            this.ClientSize = new System.Drawing.Size(910, 582);
+            this.ClientSize = new System.Drawing.Size(918, 593);
             this.Controls.Add(this.clientesDataGridView);
             this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.labelTipo);
