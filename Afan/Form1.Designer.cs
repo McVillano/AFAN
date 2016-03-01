@@ -160,8 +160,6 @@
             this.gestionDataSet = new Afan.gestionDataSet();
             this.clientesTableAdapter = new Afan.gestionDataSetTableAdapters.clientesTableAdapter();
             this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
-            this.buttonPagina = new System.Windows.Forms.Button();
-            this.textDebug = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.tabControlMain.SuspendLayout();
             this.tabPageSocial.SuspendLayout();
@@ -231,7 +229,7 @@
             // tabPageSocial
             // 
             this.tabPageSocial.AutoScroll = true;
-            this.tabPageSocial.BackColor = System.Drawing.Color.White;
+            this.tabPageSocial.BackColor = System.Drawing.SystemColors.Control;
             this.tabPageSocial.Controls.Add(this.buttonSave);
             this.tabPageSocial.Controls.Add(this.btnAddTrat);
             this.tabPageSocial.Controls.Add(this.textOtrosTrat);
@@ -1803,7 +1801,7 @@
             // 
             // tabPageEvolu
             // 
-            this.tabPageEvolu.BackColor = System.Drawing.Color.White;
+            this.tabPageEvolu.BackColor = System.Drawing.SystemColors.Control;
             this.tabPageEvolu.Controls.Add(this.buttonSaveEvol);
             this.tabPageEvolu.Controls.Add(this.buttonAddEvol);
             this.tabPageEvolu.Controls.Add(this.dataRepeater1);
@@ -1826,7 +1824,7 @@
             // 
             // buttonAddEvol
             // 
-            this.buttonAddEvol.BackColor = System.Drawing.Color.White;
+            this.buttonAddEvol.BackColor = System.Drawing.SystemColors.Control;
             this.buttonAddEvol.Image = global::Afan.Properties.Resources.button_add_mini1;
             this.buttonAddEvol.Location = new System.Drawing.Point(6, 3);
             this.buttonAddEvol.Name = "buttonAddEvol";
@@ -1840,7 +1838,7 @@
             this.dataRepeater1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataRepeater1.BackColor = System.Drawing.Color.White;
+            this.dataRepeater1.BackColor = System.Drawing.SystemColors.Control;
             // 
             // dataRepeater1.ItemTemplate
             // 
@@ -1928,7 +1926,7 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.BackColor = System.Drawing.Color.White;
+            this.tabPage1.BackColor = System.Drawing.SystemColors.Control;
             this.tabPage1.Controls.Add(this.groupBox2);
             this.tabPage1.Controls.Add(this.dataGridInformes);
             this.tabPage1.Controls.Add(this.buttonUpload);
@@ -1942,7 +1940,6 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.buttonPagina);
             this.groupBox2.Controls.Add(this.label36);
             this.groupBox2.Controls.Add(this.datePickInforme);
             this.groupBox2.Controls.Add(this.buttonExportar);
@@ -1975,7 +1972,7 @@
             // 
             this.buttonExportar.Location = new System.Drawing.Point(6, 633);
             this.buttonExportar.Name = "buttonExportar";
-            this.buttonExportar.Size = new System.Drawing.Size(463, 28);
+            this.buttonExportar.Size = new System.Drawing.Size(636, 28);
             this.buttonExportar.TabIndex = 1;
             this.buttonExportar.Text = "Exportar";
             this.buttonExportar.UseVisualStyleBackColor = true;
@@ -2101,30 +2098,12 @@
             this.fileSystemWatcher1.EnableRaisingEvents = true;
             this.fileSystemWatcher1.SynchronizingObject = this;
             // 
-            // buttonPagina
-            // 
-            this.buttonPagina.Location = new System.Drawing.Point(475, 633);
-            this.buttonPagina.Name = "buttonPagina";
-            this.buttonPagina.Size = new System.Drawing.Size(167, 28);
-            this.buttonPagina.TabIndex = 4;
-            this.buttonPagina.Text = "Pagina";
-            this.buttonPagina.UseVisualStyleBackColor = true;
-            this.buttonPagina.Click += new System.EventHandler(this.buttonPagina_Click);
-            // 
-            // textDebug
-            // 
-            this.textDebug.Location = new System.Drawing.Point(1078, 43);
-            this.textDebug.Name = "textDebug";
-            this.textDebug.Size = new System.Drawing.Size(100, 20);
-            this.textDebug.TabIndex = 10;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1369, 769);
-            this.Controls.Add(this.textDebug);
             this.Controls.Add(this.buttonAddEnfermo);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.comboEnfermo);
@@ -2295,8 +2274,6 @@
         private System.IO.FileSystemWatcher fileSystemWatcher1;
         private System.Windows.Forms.DateTimePicker datePickInforme;
         private System.Windows.Forms.Label label36;
-        private System.Windows.Forms.Button buttonPagina;
-        private System.Windows.Forms.TextBox textDebug;
     }
 }
 

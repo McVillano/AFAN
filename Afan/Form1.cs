@@ -36,7 +36,7 @@ namespace Afan
             textOCodenfermo.Visible = false;
             textOSerial.Visible = false;
             initDataRepeater();
-            richTextBox1.Font = new Font("Lucida Sans Typewrite", 8, FontStyle.Regular);
+            richTextBox1.Font = new Font("Consolas", 8, FontStyle.Regular);
             tabControlMain.Appearance = TabAppearance.FlatButtons;
         }
 
@@ -785,58 +785,116 @@ namespace Afan
             string title = "Informe_" + getEnfermo() + "_" + local.ToString("ddMMyy")+".pdf";
             pdf.Info.Title = title;
 
-            PdfPage pagina = pdf.AddPage();
-            XGraphics gfx = XGraphics.FromPdfPage(pagina);
-            XTextFormatter tf = new XTextFormatter(gfx);
-
-            XFont font = new XFont("Verdana", 10, XFontStyle.Regular);
+            XFont font = new XFont("Consolas", 10, XFontStyle.Regular);
             XFont fontFecha = new XFont("Verdana", 10, XFontStyle.Regular);
-            XFont headerFont = new XFont("Verdana",8,XFontStyle.Regular);
+            XFont headerFont = new XFont("Verdana", 8, XFontStyle.Regular);
             XFont cifFont = new XFont("Verdana", 7, XFontStyle.Regular);
 
-            tf.DrawString("Estimado/a compañero/a:", font, XBrushes.Black,
-                new XRect(45, 200, pagina.Width, pagina.Height),
-                XStringFormats.TopLeft);
-
-            tf.DrawString(richTextBox1.Text, font, XBrushes.Black,
-                new XRect(45, 220, pagina.Width, pagina.Height),
-                XStringFormats.TopLeft);
-
-            string header1 = "         Pintor Maeztu,2 bajo - 31008 Pamplona\n"+
-                             "          Telf.: 948 275 252 - Fax: 948 260 304\n"+
-                     "             E-mail: afan@alzheimernavarra.com\n" +
+            int count = 0;
+            int real = 0;
+            int nPagina = 0;
+            int max = richTextBox1.Lines.Length-1;
+            string lineas = "";
+            foreach(string line in richTextBox1.Lines)
+            {
+                if (count < 43)
+                {
+                    lineas += line + Environment.NewLine; ;
+                    count +=1;
+                }
+                else if (count == 43)
+                {
+                    lineas += real.ToString()+" "+line + Environment.NewLine;
+                    PdfPage pagina = pdf.AddPage();
+                    nPagina += 1;
+                    XGraphics gfx = XGraphics.FromPdfPage(pagina);
+                    XTextFormatter tf = new XTextFormatter(gfx);
+                    if (nPagina == 1)
+                    {
+                        //Header
+                        string header1 = "         Pintor Maeztu,2 bajo - 31008 Pamplona\n" +
+                            "          Telf.: 948 275 252 - Fax: 948 260 304\n" +
+                            "             E-mail: afan@alzheimernavarra.com\n" +
                             "                                    \n " +
-                    "Avda.Zaragoza,1 Enpta.Izda. - 31500 Tudela\n" +
-                    "                                         Telf.: 948410299\n" +
-                     "          E-mail: tudela@alzheimernavarra.com\n";
-            tf.DrawString(header1, headerFont, XBrushes.MediumPurple,
-                new XRect(390, 25, 190, 0),
-                XStringFormats.TopLeft);
+                            "Avda.Zaragoza,1 Enpta.Izda. - 31500 Tudela\n" +
+                            "                                         Telf.: 948410299\n" +
+                            "          E-mail: tudela@alzheimernavarra.com\n";
 
-            addLogo(gfx, "X:/Afan.png", 25, 15,201,134);
+                        tf.DrawString(header1, headerFont, XBrushes.MediumPurple,
+                            new XRect(390, 25, 190, 0),
+                            XStringFormats.TopLeft);
 
-            string cif = "C.I.F. G-31286784";
-            tf.DrawString(cif, cifFont, XBrushes.MediumPurple,
-                new XRect((pagina.Width/2)-20, pagina.Height-10, 190, 0),
-                XStringFormats.TopLeft);
+                        //Incio Informe
+                        tf.DrawString("Estimado/a compañero/a:", font, XBrushes.Black,
+                            new XRect(45, 200, pagina.Width, pagina.Height),
+                            XStringFormats.TopLeft);
 
-            string dia = datePickInforme.Value.ToString("dd");
-            string mes = datePickInforme.Value.ToString("MMMM");
-            string año = datePickInforme.Value.ToString("yyyy");
-            string fecha = "Pamplona, a " + dia + " de " + mes + " de " + año;
-            tf.DrawString(fecha, fontFecha, XBrushes.Black,
-                new XRect(400, 170, 190, 0),
-                XStringFormats.TopLeft);
+                        //Logo 
+                        addLogo(gfx, "X:/Afan.png", 25, 15,201,134);
 
-            string constanscia = "Y firmo para que conste";
-            tf.DrawString(constanscia, fontFecha, XBrushes.Black,
-                new XRect(310, pagina.Height - 110, 150, 0),
-                XStringFormats.TopLeft);
+                        //Fecha
+                        string dia = datePickInforme.Value.ToString("dd");
+                        string mes = datePickInforme.Value.ToString("MMMM");
+                        string año = datePickInforme.Value.ToString("yyyy");
+                        string fecha = "Pamplona, a " + dia + " de " + mes + " de " + año;
+                        tf.DrawString(fecha, fontFecha, XBrushes.Black,
+                            new XRect(400, 170, 190, 0),
+                            XStringFormats.TopLeft);
 
-            string colegiado = "          Idoia Lorrea\n Psicóloga Sanitaria\n            Nº Col 819";
-            tf.DrawString(colegiado, fontFecha, XBrushes.Black,
-                new XRect(430, pagina.Height - 80, 150, 0),
-                XStringFormats.TopLeft);
+                        //1º Pagina
+                        tf.DrawString(lineas, font, XBrushes.Black,
+                        new XRect(45, 220, pagina.Width, pagina.Height),
+                        XStringFormats.TopLeft);
+
+                        //Cif
+                        string cif = "C.I.F. G-31286784";
+                        tf.DrawString(cif, cifFont, XBrushes.MediumPurple,
+                            new XRect((pagina.Width / 2) - 20, pagina.Height - 10, 190, 0),
+                            XStringFormats.TopLeft);
+                    }
+                    else
+                    {
+                        //Cif
+                        string cif = "C.I.F. G-31286784";
+                        tf.DrawString(cif, cifFont, XBrushes.MediumPurple,
+                            new XRect((pagina.Width / 2) - 20, pagina.Height - 10, 190, 0),
+                            XStringFormats.TopLeft);
+
+                        tf.DrawString(lineas, font, XBrushes.Black,
+                            new XRect(45, 100, pagina.Width, pagina.Height),
+                            XStringFormats.TopLeft);
+                    }
+                    lineas = "";
+                    count = 0;
+                }
+                if (real == max)
+                {
+                    PdfPage pagina = pdf.AddPage();
+                    XGraphics gfx = XGraphics.FromPdfPage(pagina);
+                    XTextFormatter tf= new XTextFormatter(gfx);
+                    tf.DrawString(lineas, font, XBrushes.Black,
+                        new XRect(45, 100, pagina.Width, pagina.Height),
+                        XStringFormats.TopLeft);
+                    //Cif
+                    string cif = "C.I.F. G-31286784";
+                    tf.DrawString(cif, cifFont, XBrushes.MediumPurple,
+                        new XRect((pagina.Width / 2) - 20, pagina.Height - 10, 190, 0),
+                        XStringFormats.TopLeft);
+                    //Firmado
+                    string constanscia = "Y firmo para que conste";
+                    tf.DrawString(constanscia, fontFecha, XBrushes.Black,
+                        new XRect(310, pagina.Height - 110, 150, 0),
+                        XStringFormats.TopLeft);
+                    //Colegiado
+                    string colegiado = "          Idoia Lorrea\n Psicóloga Sanitaria\n            Nº Col 819";
+                    tf.DrawString(colegiado, fontFecha, XBrushes.Black,
+                        new XRect(430, pagina.Height - 80, 150, 0),
+                        XStringFormats.TopLeft);
+                    lineas = "";
+                    count = 0;
+                }
+                real += 1;
+            }
 
             SaveFileDialog save = new SaveFileDialog();
             save.Filter = "Todos los Archivos|*.*";
@@ -927,7 +985,6 @@ namespace Afan
         {
             int line = richTextBox1.GetLineFromCharIndex(richTextBox1.SelectionStart);
             int column = richTextBox1.SelectionStart - richTextBox1.GetFirstCharIndexFromLine(line);
-            textDebug.Text = line.ToString() + "----" + column.ToString();
             if (column >= 92)
             {
                 richTextBox1.AppendText(Environment.NewLine);
